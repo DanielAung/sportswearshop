@@ -8,58 +8,67 @@ include("functions/functions.php");
 include("includes/main.php");
 
 ?>
-  <!-- MAIN -->
-  <main>
-    <!-- HERO -->
-    <div class="nero">
-      <div class="nero__heading">
-        <span class="nero__bold">shop</span> AT AVE
-      </div>
-      <p class="nero__text">
-      </p>
+<!-- MAIN -->
+<main>
+  <!-- HERO -->
+  <div class="nero">
+    <div class="nero__heading">
+      <span class="nero__bold">shop</span> AT AVE
     </div>
-  </main>
+    <p class="nero__text">
+    </p>
+  </div>
+</main>
 
 
-<div id="content" ><!-- content Starts -->
-<div class="container" ><!-- container Starts -->
+<div id="content">
+  <!-- content Starts -->
+  <div class="container">
+    <!-- container Starts -->
 
-<div class="col-md-12" ><!--- col-md-12 Starts -->
-
-
-
-</div><!--- col-md-12 Ends -->
-
-<div class="col-md-3"><!-- col-md-3 Starts -->
-
-<?php include("includes/sidebar.php"); ?>
-
-</div><!-- col-md-3 Ends -->
-
-<div class="col-md-9" ><!-- col-md-9 Starts --->
-
-
-<?php getProducts(); ?>
-
-</div><!-- row Ends -->
-
-<center><!-- center Starts -->
-
-<ul class="pagination" ><!-- pagination Starts -->
-
-<?php getPaginator(); ?>
-
-</ul><!-- pagination Ends -->
-
-</center><!-- center Ends -->
+    <div class="col-md-12">
+      <!--- col-md-12 Starts -->
 
 
 
-</div><!-- col-md-9 Ends --->
+    </div>
+    <!--- col-md-12 Ends -->
+
+    <div class="col-md-3">
+      <!-- col-md-3 Starts -->
+
+      <?php include("includes/sidebar.php"); ?>
+
+    </div><!-- col-md-3 Ends -->
+
+    <div class="col-md-9">
+      <!-- col-md-9 Starts --->
+
+
+      <?php getProducts(); ?>
+
+    </div><!-- row Ends -->
+
+    <center>
+      <!-- center Starts -->
+
+      <ul class="pagination">
+        <!-- pagination Starts -->
+
+        <?php getPaginator(); ?>
+
+      </ul><!-- pagination Ends -->
+
+    </center><!-- center Ends -->
 
 
 
-</div><!--- wait Ends -->
+  </div><!-- col-md-9 Ends --->
+
+
+
+</div>
+<!--- wait Ends -->
 
 </div><!-- container Ends -->
 </div><!-- content Ends -->
@@ -77,277 +86,269 @@ include("includes/footer.php");
 <script src="js/bootstrap.min.js"></script>
 
 <script>
+  $(document).ready(function() {
 
-$(document).ready(function(){
+    /// Hide And Show Code Starts ///
 
-/// Hide And Show Code Starts ///
+    $('.nav-toggle').click(function() {
 
-$('.nav-toggle').click(function(){
+      $(".panel-collapse,.collapse-data").slideToggle(700, function() {
 
-$(".panel-collapse,.collapse-data").slideToggle(700,function(){
+        if ($(this).css('display') == 'none') {
 
-if($(this).css('display')=='none'){
+          $(".hide-show").html('Show');
 
-$(".hide-show").html('Show');
+        } else {
 
-}
-else{
+          $(".hide-show").html('Hide');
 
-$(".hide-show").html('Hide');
+        }
 
-}
+      });
 
-});
+    });
 
-});
+    /// Hide And Show Code Ends ///
 
-/// Hide And Show Code Ends ///
+    /// Search Filters code Starts ///
 
-/// Search Filters code Starts ///
+    $(function() {
 
-$(function(){
+      $.fn.extend({
 
-$.fn.extend({
+        filterTable: function() {
 
-filterTable: function(){
+          return this.each(function() {
 
-return this.each(function(){
+            $(this).on('keyup', function() {
 
-$(this).on('keyup', function(){
+              var $this = $(this),
 
-var $this = $(this),
+                search = $this.val().toLowerCase(),
 
-search = $this.val().toLowerCase(),
+                target = $this.attr('data-filters'),
 
-target = $this.attr('data-filters'),
+                handle = $(target),
 
-handle = $(target),
+                rows = handle.find('li a');
 
-rows = handle.find('li a');
+              if (search == '') {
 
-if(search == '') {
+                rows.show();
 
-rows.show();
+              } else {
 
-} else {
+                rows.each(function() {
 
-rows.each(function(){
+                  var $this = $(this);
 
-var $this = $(this);
+                  $this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
 
-$this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
+                });
 
-});
+              }
 
-}
+            });
 
-});
+          });
 
-});
+        }
 
-}
+      });
 
-});
+      $('[data-action="filter"][id="dev-table-filter"]').filterTable();
 
-$('[data-action="filter"][id="dev-table-filter"]').filterTable();
+    });
 
-});
+    /// Search Filters code Ends ///
 
-/// Search Filters code Ends ///
-
-});
-
-
-
+  });
 </script>
 
 
 <script>
+  $(document).ready(function() {
 
+    // getProducts Function Code Starts
 
-$(document).ready(function(){
+    function getProducts() {
 
-  // getProducts Function Code Starts
+      // Manufacturers Code Starts
 
-  function getProducts(){
+      var sPath = '';
 
-  // Manufacturers Code Starts
+      var aInputs = $('li').find('.get_manufacturer');
 
-    var sPath = '';
+      var aKeys = Array();
 
-var aInputs = $('li').find('.get_manufacturer');
+      var aValues = Array();
 
-var aKeys = Array();
+      iKey = 0;
 
-var aValues = Array();
+      $.each(aInputs, function(key, oInput) {
 
-iKey = 0;
+        if (oInput.checked) {
 
-$.each(aInputs,function(key,oInput){
+          aKeys[iKey] = oInput.value
 
-if(oInput.checked){
+        };
 
-aKeys[iKey] =  oInput.value
+        iKey++;
 
-};
+      });
 
-iKey++;
+      if (aKeys.length > 0) {
 
-});
+        var sPath = '';
 
-if(aKeys.length>0){
+        for (var i = 0; i < aKeys.length; i++) {
 
-var sPath = '';
+          sPath = sPath + 'man[]=' + aKeys[i] + '&';
 
-for(var i = 0; i < aKeys.length; i++){
+        }
 
-sPath = sPath + 'man[]=' + aKeys[i]+'&';
+      }
 
-}
+      // Manufacturers Code ENDS
 
-}
+      // Products Categories Code Starts
 
-// Manufacturers Code ENDS
+      var aInputs = Array();
 
-// Products Categories Code Starts
+      var aInputs = $('li').find('.get_p_cat');
 
-var aInputs = Array();
+      var aKeys = Array();
 
-var aInputs = $('li').find('.get_p_cat');
+      var aValues = Array();
 
-var aKeys = Array();
+      iKey = 0;
 
-var aValues = Array();
+      $.each(aInputs, function(key, oInput) {
 
-iKey = 0;
+        if (oInput.checked) {
 
-$.each(aInputs,function(key,oInput){
+          aKeys[iKey] = oInput.value
 
-if(oInput.checked){
+        };
 
-aKeys[iKey] =  oInput.value
+        iKey++;
 
-};
+      });
 
-iKey++;
+      if (aKeys.length > 0) {
 
-});
+        for (var i = 0; i < aKeys.length; i++) {
 
-if(aKeys.length>0){
+          sPath = sPath + 'p_cat[]=' + aKeys[i] + '&';
 
-for(var i = 0; i < aKeys.length; i++){
+        }
 
-sPath = sPath + 'p_cat[]=' + aKeys[i]+'&';
+      }
 
-}
+      // Products Categories Code ENDS
 
-}
+      // Categories Code Starts
 
-// Products Categories Code ENDS
+      var aInputs = Array();
 
-   // Categories Code Starts
+      var aInputs = $('li').find('.get_cat');
 
-var aInputs = Array();
+      var aKeys = Array();
 
-var aInputs = $('li').find('.get_cat');
+      var aValues = Array();
 
-var aKeys  = Array();
+      iKey = 0;
 
-var aValues = Array();
+      $.each(aInputs, function(key, oInput) {
 
-iKey = 0;
+        if (oInput.checked) {
 
-    $.each(aInputs,function(key,oInput){
+          aKeys[iKey] = oInput.value
 
-    if(oInput.checked){
+        };
 
-    aKeys[iKey] =  oInput.value
+        iKey++;
 
-};
+      });
 
-    iKey++;
+      if (aKeys.length > 0) {
 
-});
+        for (var i = 0; i < aKeys.length; i++) {
 
-if(aKeys.length>0){
+          sPath = sPath + 'cat[]=' + aKeys[i] + '&';
 
-    for(var i = 0; i < aKeys.length; i++){
+        }
 
-    sPath = sPath + 'cat[]=' + aKeys[i]+'&';
+      }
 
-}
+      // Categories Code ENDS
 
-}
+      // Loader Code Starts
 
-   // Categories Code ENDS
+      $('#wait').html('<img src="images/load.gif">');
 
-   // Loader Code Starts
+      // Loader Code ENDS
 
-$('#wait').html('<img src="images/load.gif">');
+      // ajax Code Starts
 
-// Loader Code ENDS
+      $.ajax({
 
-// ajax Code Starts
+        url: "load.php",
 
-$.ajax({
+        method: "POST",
 
-url:"load.php",
+        data: sPath + 'sAction=getProducts',
 
-method:"POST",
+        success: function(data) {
 
-data: sPath+'sAction=getProducts',
+          $('#Products').html('');
 
-success:function(data){
+          $('#Products').html(data);
 
- $('#Products').html('');
+          $("#wait").empty();
 
- $('#Products').html(data);
+        }
 
- $("#wait").empty();
+      });
 
-}
+      $.ajax({
+        url: "load.php",
+        method: "POST",
+        data: sPath + 'sAction=getPaginator',
+        success: function(data) {
+          $('.pagination').html('');
+          $('.pagination').html(data);
+        }
 
-});
+      });
 
-    $.ajax({
-url:"load.php",
-method:"POST",
-data: sPath+'sAction=getPaginator',
-success:function(data){
-$('.pagination').html('');
-$('.pagination').html(data);
-}
+      // ajax Code Ends
+
+    }
+
+    // getProducts Function Code Ends
+
+    $('.get_manufacturer').click(function() {
+
+      getProducts();
 
     });
 
-// ajax Code Ends
 
-   }
+    $('.get_p_cat').click(function() {
 
-   // getProducts Function Code Ends
+      getProducts();
 
-$('.get_manufacturer').click(function(){
+    });
 
-getProducts();
+    $('.get_cat').click(function() {
 
-});
+      getProducts();
 
-
-  $('.get_p_cat').click(function(){
-
-getProducts();
-
-});
-
-$('.get_cat').click(function(){
-
-getProducts();
-
-});
+    });
 
 
- });
-
+  });
 </script>
 
 </body>
