@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect("localhost", "root", "", "ecom_store");
+$db = mysqli_connect("localhost", "root", "", "sportdb");
 
 /// IP address code starts /////
 function getRealUserIp()
@@ -18,24 +18,58 @@ function getRealUserIp()
 }
 /// IP address code Ends /////
 
-function getManufactures() {
+function getManufactures($id = null)
+{
     $data = [];
 
     global $db;
 
     $get_manufactures = "select * from manufacturers";
+
+    if (!empty($id)) {
+        $get_manufactures = $get_manufactures . " where manufacturer_id  = '$id'";
+    }
+
+
     $run_manufactures = mysqli_query($db, $get_manufactures);
 
     while ($row_manufactures = mysqli_fetch_array($run_manufactures)) {
-        $manufacturer_id = $row_manufactures['manufacturer_id'];
-        $manufacturer_title = $row_manufactures['manufacturer_title'];
-
-        array_push($data, [ 'title' => $manufacturer_title, 'id' => $manufacturer_id ]);
+        array_push($data, [
+            'id' => $row_manufactures['manufacturer_id'],
+            'title' => $row_manufactures['manufacturer_title'],
+            'image' => $row_manufactures['manufacturer_image'],
+            'top' => $row_manufactures['manufacturer_top']
+        ]);
     }
 
     return $data;
 }
 
+function getCategories($id = null)
+{
+    $data = [];
+
+    global $db;
+
+    $get_categories = "select * from categories";
+
+    if (!empty($id)) {
+        $get_categories = $get_categories . " where cat_id  = '$id'";
+    }
+
+    $run_cart = mysqli_query($db, $get_categories);
+
+    while ($row_cart = mysqli_fetch_array($run_cart)) {
+        array_push($data, [
+            'id' => $row_cart['cat_id'],
+            'title' => $row_cart['cat_title'],
+            'image' => $row_cart['cat_image'],
+            'top' => $row_cart['cat_top']
+        ]);
+    }
+
+    return $data;
+}
 // items function Starts ///
 
 function items()
@@ -93,6 +127,45 @@ function total_price()
 
 // getPro function Starts //
 
+function getProductNew()
+{
+    $data = [];
+
+    global $db;
+
+    $get_products = "select * from products";
+    $run_products = mysqli_query($db, $get_products);
+
+    while ($row_products = mysqli_fetch_array($run_products)) {
+        $manufacturer = getManufactures($row_products['manufacturer_id'])[0];
+        $category = getCategories($row_products['cat_id'])[0];
+
+        array_push($data, [
+            'pro_id' => $row_products['product_id'],
+            'pro_title' => $row_products['product_title'],
+            'pro_img1' =>  $row_products['product_img1'],
+            'pro_img2' =>  $row_products['product_img2'],
+            'pro_img3' =>  $row_products['product_img3'],
+            'pro_price' => $row_products['product_price'],
+            'product_psp_price' => $row_products['product_psp_price'],
+            'product_desc' => $row_products['product_desc'],
+            'product_features' => $row_products['product_features'],
+            'product_video' => $row_products['product_video'],
+            'product_keywords' => $row_products['product_keywords'],
+            'product_label' => $row_products['product_label'],
+            'status' => $row_products['status'],
+            'manufacturer' => $manufacturer,
+            'category' => $category
+        ]);
+    }
+
+    // echo "<pre>";
+    // print_r($data);
+    // echo "</pre>";
+
+    return $data;
+}
+
 function getPro()
 {
 
@@ -101,6 +174,7 @@ function getPro()
     $get_products = "select * from products order by 1 DESC LIMIT 0,8";
 
     $run_products = mysqli_query($db, $get_products);
+    
 
     while ($row_products = mysqli_fetch_array($run_products)) {
 
@@ -146,67 +220,67 @@ function getPro()
 
             $product_label = "
 
-<a class='label sale' href='#' style='color:black;'>
+                <a class='label sale' href='#' style='color:black;'>
 
-<div class='thelabel'>$pro_label</div>
+                <div class='thelabel'>$pro_label</div>
 
-<div class='label-background'> </div>
+                <div class='label-background'> </div>
 
-</a>
+                </a>
 
-";
+            ";
         }
 
 
         echo "
 
-    <div class='col-md-4 col-sm-6 single'>
+                <div class='col-md-4 col-sm-6 single'>
 
-    <div class='product'>
-  
-      <a href='$pro_url'>
-  
-        <img src='admin_area/product_images/$pro_img1' class='img-responsive'>
-  
-      </a>
-  
-      <div class='text'>
-  
-        <center>
-  
-          <p class='btn btn-warning'> $manufacturer_name </p>
-  
-        </center>
-  
-        <hr>
-  
-        <h3><a href='$pro_url'>$pro_title</a></h3>
-  
-        <p class='price'> $product_price $product_psp_price </p>
-  
-        <p class='buttons'>
-  
-          <a href='$pro_url' class='btn btn-default'>View Details</a>
-  
-          <a href='$pro_url' class='btn btn-danger'>
-  
-            <i class='fa fa-shopping-cart'></i> Add To Cart
-  
-          </a>
-  
-  
-        </p>
-  
-      </div>
-  
-      $product_label
-  
-  
-    </div>
-  
-  </div>
+                <div class='product'>
+            
+                <a href='$pro_url'>
+            
+                    <img src='admin_area/product_images/$pro_img1' class='img-responsive'>
+            
+                </a>
+            
+                <div class='text'>
+            
+                    <center>
+            
+                    <p class='btn btn-warning'> $manufacturer_name </p>
+            
+                    </center>
+            
+                    <hr>
+            
+                    <h3><a href='$pro_url'>$pro_title</a></h3>
+            
+                    <p class='price'> $product_price $product_psp_price </p>
+            
+                    <p class='buttons'>
+            
+                    <a href='$pro_url' class='btn btn-default'>View Details</a>
+            
+                    <a href='$pro_url' class='btn btn-danger'>
+            
+                        <i class='fa fa-shopping-cart'></i> Add To Cart
+            
+                    </a>
+            
+            
+                    </p>
+            
+                </div>
+            
+                $product_label
+            
+            
+                </div>
+            
+            </div>
 
-";
+        ";
     }
 }
 
@@ -334,67 +408,67 @@ function getProducts()
 
             $product_label = "
 
-<a class='label sale' href='#' style='color:black;'>
+                <a class='label sale' href='#' style='color:black;'>
 
-<div class='thelabel'>$pro_label</div>
+                <div class='thelabel'>$pro_label</div>
 
-<div class='label-background'> </div>
+                <div class='label-background'> </div>
 
-</a>
+                </a>
 
-";
+            ";
         }
 
 
         echo "
 
-<div class='col-md-4 col-sm-6 center-responsive' >
+        <div class='col-md-4 col-sm-6 center-responsive' >
 
-<div class='product' >
+            <div class='product' >
 
-<a href='$pro_url' >
+            <a href='$pro_url' >
 
-<img src='admin_area/product_images/$pro_img1' class='img-responsive' >
+                <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
 
-</a>
+            </a>
 
-<div class='text' >
+            <div class='text' >
 
-<center>
+            <center>
 
-<p class='btn btn-warning'> $manufacturer_name </p>
+                <p class='btn btn-warning'> $manufacturer_name </p>
 
-</center>
+            </center>
 
-<hr>
+            <hr>
 
-<h3><a href='$pro_url' >$pro_title</a></h3>
+            <h3><a href='$pro_url' >$pro_title</a></h3>
 
-<p class='price' > $product_price $product_psp_price </p>
+            <p class='price' > $product_price $product_psp_price </p>
 
-<p class='buttons' >
+            <p class='buttons' >
 
-<a href='$pro_url' class='btn btn-default' >View details</a>
+            <a href='$pro_url' class='btn btn-default' >View details</a>
 
-<a href='$pro_url' class='btn btn-danger'>
+            <a href='$pro_url' class='btn btn-danger'>
 
-<i class='fa fa-shopping-cart' data-price=$pro_price></i> Add To Cart
+            <i class='fa fa-shopping-cart' data-price=$pro_price></i> Add To Cart
 
-</a>
-
-
-</p>
-
-</div>
-
-$product_label
+            </a>
 
 
-</div>
+            </p>
 
-</div>
+            </div>
 
-";
+            $product_label
+
+
+            </div>
+
+        </div>
+
+        ";
     }
     /// getProducts function Code Ends ///
 

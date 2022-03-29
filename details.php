@@ -11,10 +11,11 @@ include("includes/main.php");
 
 <?php
 
+echo $_GET['pro_id'];
 
 $product_id = @$_GET['pro_id'];
 
-$get_product = "select * from products where product_url='$product_id'";
+$get_product = "select * from products where product_id='$product_id'";
 
 $run_product = mysqli_query($con,$get_product);
 

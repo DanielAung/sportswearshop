@@ -5,173 +5,369 @@ session_start();
 include("includes/db.php");
 include("includes/header.php");
 include("functions/functions.php");
-include("includes/main.php");
+// include("includes/main.php");
 
 ?>
 
-
-  <!-- Cover -->
-  <main>
-    <div class="hero">
-      <a href="shop.php" class="btn1">View all products
-</a>
+<!-- Preloader -->
+<div class="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-icon">
+      <span></span>
+      <span></span>
     </div>
-    <!-- Main -->
-    <div class="wrapper">
-            <h1>Featured Collection<h1>
-            
-      </div>
+  </div>
+</div>
+<!-- /End Preloader -->
 
 
-
-    <div id="content" class="container"><!-- container Starts -->
-
-    <div class="row"><!-- row Starts -->
-
-    <?php
-
-    getPro();
-
-    ?>
-
-    </div><!-- row Ends -->
-
-    </div><!-- container Ends -->
-    <!-- FOOTER -->
-    <footer class="page-footer">
-
-      <div class="footer-nav">
-        <div class="container clearfix">
-
-          <div class="footer-nav__col footer-nav__col--info">
-            <div class="footer-nav__heading">Information</div>
-            <ul class="footer-nav__list">
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">The brand</a>
+<!-- Start Header Area -->
+<header class="header navbar-area">
+  <!-- Start Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-4 col-md-4 col-12">
+          <div class="top-left">
+            <ul class="menu-top-link">
+              <li>
+                <div class="select-position">
+                  <select id="select4">
+                    <option value="0" selected>$ USD</option>
+                    <option value="1">€ EURO</option>
+                    <option value="2">$ CAD</option>
+                    <option value="3">₹ INR</option>
+                    <option value="4">¥ CNY</option>
+                    <option value="5">৳ BDT</option>
+                  </select>
+                </div>
               </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Local stores</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Customer service</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Privacy &amp; cookies</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Site map</a>
+              <li>
+                <div class="select-position">
+                  <select id="select5">
+                    <option value="0" selected>English</option>
+                    <option value="1">Español</option>
+                    <option value="2">Filipino</option>
+                    <option value="3">Français</option>
+                    <option value="4">العربية</option>
+                    <option value="5">हिन्दी</option>
+                    <option value="6">বাংলা</option>
+                  </select>
+                </div>
               </li>
             </ul>
           </div>
-
-          <div class="footer-nav__col footer-nav__col--whybuy">
-            <div class="footer-nav__heading">Why buy from us</div>
-            <ul class="footer-nav__list">
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Shipping &amp; returns</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Secure shipping</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Testimonials</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Award winning</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Ethical trading</a>
-              </li>
+        </div>
+        <div class="col-lg-4 col-md-4 col-12">
+          <div class="top-middle">
+            <ul class="useful-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
             </ul>
           </div>
-
-          <div class="footer-nav__col footer-nav__col--account">
-            <div class="footer-nav__heading">Your account</div>
-            <ul class="footer-nav__list">
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Sign in</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Register</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">View cart</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">View your lookbook</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Track an order</a>
-              </li>
-              <li class="footer-nav__item">
-                <a href="#" class="footer-nav__link">Update information</a>
-              </li>
-            </ul>
-          </div>
-
-
-          <div class="footer-nav__col footer-nav__col--contacts">
-            <div class="footer-nav__heading">Contact details</div>
-            <address class="address">
-            Head Office: Avenue Fashion.<br>
-            180-182 Regent Street, London.
-          </address>
-            <div class="phone">
-              Telephone:
-              <a class="phone__number" href="tel:0123456789">0123-456-789</a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-12">
+          <div class="top-end">
+            <div class="user">
+              <i class="lni lni-user"></i>
+              Hello
             </div>
-            <div class="email">
-              Email:
-              <a href="mailto:support@yourwebsite.com" class="email__addr">support@yourwebsite.com</a>
+            <ul class="user-login">
+              <li>
+                <a href="login.html">Sign In</a>
+              </li>
+              <li>
+                <a href="register.html">Register</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Topbar -->
+  <!-- Start Header Middle -->
+  <div class="header-middle">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-md-3 col-7">
+          <!-- Start Header Logo -->
+          <a class="navbar-brand" href="index.html">
+            <img src="assets/images/logo/logo.svg" alt="Logo">
+          </a>
+          <!-- End Header Logo -->
+        </div>
+        <div class="col-lg-5 col-md-7 d-xs-none">
+          <!-- Start Main Menu Search -->
+          <div class="main-menu-search">
+            <!-- navbar search start -->
+            <div class="navbar-search search-style-5">
+              <div class="search-select">
+                <div class="select-position">
+                  <select id="select1">
+                    <option selected>All</option>
+                    <option value="1">option 01</option>
+                    <option value="2">option 02</option>
+                    <option value="3">option 03</option>
+                    <option value="4">option 04</option>
+                    <option value="5">option 05</option>
+                  </select>
+                </div>
+              </div>
+              <div class="search-input">
+                <input type="text" placeholder="Search">
+              </div>
+              <div class="search-btn">
+                <button><i class="lni lni-search-alt"></i></button>
+              </div>
+            </div>
+            <!-- navbar search Ends -->
+          </div>
+          <!-- End Main Menu Search -->
+        </div>
+        <div class="col-lg-4 col-md-2 col-5">
+          <div class="middle-right-area">
+            <div class="nav-hotline">
+              <i class="lni lni-phone"></i>
+              <h3>Hotline:
+                <span>(+100) 123 456 7890</span>
+              </h3>
+            </div>
+            <div class="navbar-cart">
+              <div class="wishlist">
+                <a href="javascript:void(0)">
+                  <i class="lni lni-heart"></i>
+                  <span class="total-items">0</span>
+                </a>
+              </div>
+              <div class="cart-items">
+                <a href="javascript:void(0)" class="main-btn">
+                  <i class="lni lni-cart"></i>
+                  <span class="total-items">2</span>
+                </a>
+                <!-- Shopping Item -->
+                <div class="shopping-item">
+                  <div class="dropdown-cart-header">
+                    <span>2 Items</span>
+                    <a href="cart.html">View Cart</a>
+                  </div>
+                  <ul class="shopping-list">
+                    <li>
+                      <a href="javascript:void(0)" class="remove" title="Remove this item"><i class="lni lni-close"></i></a>
+                      <div class="cart-img-head">
+                        <a class="cart-img" href="product-details.html"><img src="assets/images/header/cart-items/item1.jpg" alt="#"></a>
+                      </div>
+
+                      <div class="content">
+                        <h4><a href="product-details.html">
+                            Apple Watch Series 6</a></h4>
+                        <p class="quantity">1x - <span class="amount">$99.00</span></p>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)" class="remove" title="Remove this item"><i class="lni lni-close"></i></a>
+                      <div class="cart-img-head">
+                        <a class="cart-img" href="product-details.html"><img src="assets/images/header/cart-items/item2.jpg" alt="#"></a>
+                      </div>
+                      <div class="content">
+                        <h4><a href="product-details.html">Wi-Fi Smart Camera</a></h4>
+                        <p class="quantity">1x - <span class="amount">$35.00</span></p>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="bottom">
+                    <div class="total">
+                      <span>Total</span>
+                      <span class="total-amount">$134.00</span>
+                    </div>
+                    <div class="button">
+                      <a href="checkout.html" class="btn animate">Checkout</a>
+                    </div>
+                  </div>
+                </div>
+                <!--/ End Shopping Item -->
+              </div>
             </div>
           </div>
-
         </div>
       </div>
-
-      <!-- <div class="banners">
-        <div class="container clearfix">
-
-          <div class="banner-award">
-            <span>Award winner</span><br> Fashion awards 2016
+    </div>
+  </div>
+  <!-- End Header Middle -->
+  <!-- Start Header Bottom -->
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8 col-md-6 col-12">
+        <div class="nav-inner">
+          <!-- Start Mega Category Menu -->
+          <div class="mega-category-menu">
+            <span class="cat-button"><i class="lni lni-menu"></i>All Categories</span>
+            <ul class="sub-category">
+              <li><a href="product-grids.html">Electronics <i class="lni lni-chevron-right"></i></a>
+                <ul class="inner-sub-category">
+                  <li><a href="product-grids.html">Digital Cameras</a></li>
+                  <li><a href="product-grids.html">Camcorders</a></li>
+                  <li><a href="product-grids.html">Camera Drones</a></li>
+                  <li><a href="product-grids.html">Smart Watches</a></li>
+                  <li><a href="product-grids.html">Headphones</a></li>
+                  <li><a href="product-grids.html">MP3 Players</a></li>
+                  <li><a href="product-grids.html">Microphones</a></li>
+                  <li><a href="product-grids.html">Chargers</a></li>
+                  <li><a href="product-grids.html">Batteries</a></li>
+                  <li><a href="product-grids.html">Cables & Adapters</a></li>
+                </ul>
+              </li>
+              <li><a href="product-grids.html">accessories</a></li>
+              <li><a href="product-grids.html">Televisions</a></li>
+              <li><a href="product-grids.html">best selling</a></li>
+              <li><a href="product-grids.html">top 100 offer</a></li>
+              <li><a href="product-grids.html">sunglass</a></li>
+              <li><a href="product-grids.html">watch</a></li>
+              <li><a href="product-grids.html">man’s product</a></li>
+              <li><a href="product-grids.html">Home Audio & Theater</a></li>
+              <li><a href="product-grids.html">Computers & Tablets </a></li>
+              <li><a href="product-grids.html">Video Games </a></li>
+              <li><a href="product-grids.html">Home Appliances </a></li>
+            </ul>
           </div>
-
-          <div class="banner-social">
-            <a href="#" class="banner-social__link">
-            <i class="icon-facebook"></i>
-          </a>
-            <a href="#" class="banner-social__link">
-            <i class="icon-twitter"></i>
-          </a>
-            <a href="#" class="banner-social__link">
-            <i class="icon-instagram"></i>
-          </a>
-            <a href="#" class="banner-social__link">
-            <i class="icon-pinterest-circled"></i>
-          </a>
-          </div>
-
-        </div>
-      </div> -->
-
-      <div class="page-footer__subline">
-        <div class="container clearfix">
-
-          <div class="copyright">
-            &copy; <?php echo date("Y");?> Ecommerce Website-PHP&trade;
-          </div>
-
-          <div class="developer">
-            Developed by Yasser Dalouzi
-          </div>
-
-          <div class="designby">
-            Design by Yasser Dalouzi
-          </div>
-
+          <!-- End Mega Category Menu -->
+          <!-- Start Navbar -->
+          <nav class="navbar navbar-expand-lg">
+            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+              <span class="toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+              <ul id="nav" class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a href="index.html" class="active" aria-label="Toggle navigation">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Pages</a>
+                  <ul class="sub-menu collapse" id="submenu-1-2">
+                    <li class="nav-item"><a href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a href="faq.html">Faq</a></li>
+                    <li class="nav-item"><a href="login.html">Login</a></li>
+                    <li class="nav-item"><a href="register.html">Register</a></li>
+                    <li class="nav-item"><a href="mail-success.html">Mail Success</a></li>
+                    <li class="nav-item"><a href="404.html">404 Error</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-3" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Shop</a>
+                  <ul class="sub-menu collapse" id="submenu-1-3">
+                    <li class="nav-item"><a href="product-grids.html">Shop Grid</a></li>
+                    <li class="nav-item"><a href="product-list.html">Shop List</a></li>
+                    <li class="nav-item"><a href="product-details.html">shop Single</a></li>
+                    <li class="nav-item"><a href="cart.html">Cart</a></li>
+                    <li class="nav-item"><a href="checkout.html">Checkout</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Blog</a>
+                  <ul class="sub-menu collapse" id="submenu-1-4">
+                    <li class="nav-item"><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a>
+                    </li>
+                    <li class="nav-item"><a href="blog-single.html">Blog Single</a></li>
+                    <li class="nav-item"><a href="blog-single-sidebar.html">Blog Single
+                        Sibebar</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="contact.html" aria-label="Toggle navigation">Contact Us</a>
+                </li>
+              </ul>
+            </div> <!-- navbar collapse -->
+          </nav>
+          <!-- End Navbar -->
         </div>
       </div>
-    </footer>
-</body>
+      <div class="col-lg-4 col-md-6 col-12">
+        <!-- Start Nav Social -->
+        <div class="nav-social">
+          <h5 class="title">Follow Us:</h5>
+          <ul>
+            <li>
+              <a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
+            </li>
+            <li>
+              <a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a>
+            </li>
+            <li>
+              <a href="javascript:void(0)"><i class="lni lni-instagram"></i></a>
+            </li>
+            <li>
+              <a href="javascript:void(0)"><i class="lni lni-skype"></i></a>
+            </li>
+          </ul>
+        </div>
+        <!-- End Nav Social -->
+      </div>
+    </div>
+  </div>
+  <!-- End Header Bottom -->
+</header>
+<!-- End Header Area -->
 
-</html>
+<!-- Cover -->
+
+
+<!-- Start Trending Product Area -->
+<section class="trending-product section" style="margin-top: 12px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h2>Trending Product</h2>
+          <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+            suffered alteration in some form.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <?php
+      $products = getProductNew();
+
+      for ($i = 0; $i < count($products); $i++) {
+      ?>
+        <div class="col-lg-3 col-md-6 col-12">
+          <!-- Start Single Product -->
+          <div class="single-product">
+            <div class="product-image">
+              <img src="admin_area/product_images/<?php echo $products[$i]['pro_img1'] ?>" alt="#">
+              <div class="button">
+                <a href="details.php?pro_id=<?php echo $products[$i]['pro_id'] ?>" class="btn"><i class="lni lni-cart"></i>
+                  Add to Cart
+                </a>
+              </div>
+            </div>
+            <div class="product-info">
+              <span class="category"><?php echo $products[$i]['manufacturer']['title'] ?></span>
+              <h4 class="title">
+                <a href="product-grids.html"><?php echo $products[$i]['pro_title'] ?></a>
+              </h4>
+              <!-- <ul class="review">
+                <li><i class="lni lni-star-filled"></i></li>
+                <li><i class="lni lni-star-filled"></i></li>
+                <li><i class="lni lni-star-filled"></i></li>
+                <li><i class="lni lni-star-filled"></i></li>
+                <li><i class="lni lni-star"></i></li>
+                <li><span>4.0 Review(s)</span></li>
+              </ul> -->
+              <div class="price">
+                <span class="fs-5">$ <?php echo $products[$i]['product_psp_price'] ?>.00</span>
+                <span class="text-decoration-line-through fs-6">$ <?php echo $products[$i]['pro_price'] ?>.00</span>
+              </div>
+            </div>
+          </div>
+          <!-- End Single Product -->
+        </div>
+
+      <?php } ?>
+    </div>
+  </div>
+</section>
+<!-- End Trending Product Area -->
+<?php include("includes/footer.php"); ?>
