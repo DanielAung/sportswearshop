@@ -79,7 +79,7 @@ else {
 
 $i = 0;
 
-$get_pro = "select * from products where status='product'";
+$get_pro = "select * from products ";
 
 $run_pro = mysqli_query($con,$get_pro);
 

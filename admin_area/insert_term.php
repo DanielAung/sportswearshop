@@ -62,7 +62,7 @@ else {
 
 <div class="col-md-6"><!-- col-md-6 Starts -->
 
-<input type="text" name="term_title" class="form-control" >
+<input type="text" name="term_title" class="form-control" required>
 
 </div><!-- col-md-6 Ends -->
 

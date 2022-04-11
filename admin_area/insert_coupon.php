@@ -57,7 +57,7 @@ else {
 
 <div class="col-md-6">
 
-<input type="text" name="coupon_title" class="form-control">
+<input type="text" name="coupon_title" class="form-control" requried>
 
 </div>
 
@@ -69,7 +69,7 @@ else {
 
 <div class="col-md-6">
 
-<input type="text" name="coupon_price" class="form-control">
+<input type="text" name="coupon_price" class="form-control" required>
 
 </div>
 
@@ -81,7 +81,7 @@ else {
 
 <div class="col-md-6">
 
-<input type="text" name="coupon_code" class="form-control">
+<input type="text" name="coupon_code" class="form-control" required>
 
 </div>
 
@@ -93,7 +93,7 @@ else {
 
 <div class="col-md-6">
 
-<input type="number" name="coupon_limit" value="1" class="form-control">
+<input type="number" name="coupon_limit" value="1" class="form-control" required>
 
 </div>
 

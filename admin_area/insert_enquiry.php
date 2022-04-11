@@ -56,7 +56,7 @@ else {
 
 <div class="col-md-6">
 
-<input type="text" name="enquiry_title" class="form-control">
+<input type="text" name="enquiry_title" class="form-control" required>
 
 </div>
 

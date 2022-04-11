@@ -57,7 +57,7 @@ else {
 
 <div class="col-md-6">
 
-<input type="text" name="rel_title" class="form-control">
+<input type="text" name="rel_title" class="form-control" required>
 
 </div>
 

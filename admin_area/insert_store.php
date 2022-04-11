@@ -58,7 +58,7 @@ else {
 
 <div class="col-md-6">
 
-<input type="text" name="store_title" class="form-control">
+<input type="text" name="store_title" class="form-control" required>
 
 </div>
 
@@ -72,7 +72,7 @@ else {
 
 <div class="col-md-6">
 
-<input type="file" name="store_image" class="form-control">
+<input type="file" name="store_image" class="form-control" requried>
 
 </div>
 
@@ -85,7 +85,7 @@ else {
 
 <div class="col-md-6">
 
-<textarea name="store_desc" class="form-control" rows="10" cols="19">
+<textarea name="store_desc" class="form-control" rows="10" cols="19" requried>
 
 
 

@@ -57,7 +57,7 @@ else {
 
 <div class="col-md-6" >
 
-<input type="text" name="p_cat_title" class="form-control" >
+<input type="text" name="p_cat_title" class="form-control" required>
 
 </div>
 
@@ -69,11 +69,11 @@ else {
 
 <div class="col-md-6" >
 
-<input type="radio" name="p_cat_top" value="yes" >
+<input type="radio" name="p_cat_top" value="yes" required>
 
 <label> Yes </label>
 
-<input type="radio" name="p_cat_top" value="no" >
+<input type="radio" name="p_cat_top" value="no" required>
 
 <label> No </label>
 

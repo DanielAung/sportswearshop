@@ -77,7 +77,7 @@ $about_desc = $row_about_us['about_desc'];
 
 <div class="col-md-8">
 
-<input type="text" name="about_heading" class="form-control" value="<?php echo $about_heading; ?>">
+<input type="text" name="about_heading" class="form-control" value="<?php echo $about_heading; ?>" required>
 
 </div>
 
@@ -90,7 +90,7 @@ $about_desc = $row_about_us['about_desc'];
 
 <div class="col-md-8">
 
-<textarea name="about_short_desc" class="form-control" rows="5">
+<textarea name="about_short_desc" class="form-control" rows="5" requried>
 
 <?php echo $about_short_desc; ?>
 
@@ -106,7 +106,7 @@ $about_desc = $row_about_us['about_desc'];
 
 <div class="col-md-8">
 
-<textarea name="about_desc" id="about_desc" class="form-control" rows="10">
+<textarea name="about_desc" id="about_desc" class="form-control" rows="10" requried>
 
 <?php echo $about_desc; ?>
 
