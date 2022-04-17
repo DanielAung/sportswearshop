@@ -1,9 +1,9 @@
 <?php
-  session_start();
-  include("includes/db.php");
-  include("includes/header.php");
-  include("functions/functions.php");
-  include("includes/main.php");
+session_start();
+include("includes/db.php");
+include("includes/header.php");
+include("functions/functions.php");
+include("includes/main.php");
 ?>
 <!-- MAIN -->
 <main>
@@ -19,20 +19,24 @@
 <div id="content">
   <!-- content Starts -->
   <div class="container">
-    <!-- container Starts -->
-    <div class="col-md-12">
-      <!--- col-md-12 Starts -->
-    </div>
-    <!--- col-md-12 Ends -->
-    <div class="col-md-3">
-      <!-- col-md-3 Starts -->
-      <?php include("includes/sidebar.php"); ?>
-    </div><!-- col-md-3 Ends -->
+    <div class="row">
+      <!-- container Starts -->
+      <div class="col-md-12">
+        <!--- col-md-12 Starts -->
+      </div>
+      <!--- col-md-12 Ends -->
+      <div class="col-md-3">
+        <!-- col-md-3 Starts -->
+        <?php include("includes/sidebar.php"); ?>
+      </div><!-- col-md-3 Ends -->
 
-    <div class="col-md-9">
-      <!-- col-md-9 Starts --->
-      <?php getProducts(); ?>
-    </div><!-- row Ends -->
+      <div class="col-md-9">
+        <!-- col-md-9 Starts --->
+        <div class="row">
+          <?php getProducts(); ?>
+        </div>
+      </div><!-- row Ends -->
+    </div>
 
     <center>
       <!-- center Starts -->
@@ -47,7 +51,7 @@
 </div><!-- container Ends -->
 </div><!-- content Ends -->
 <?php
-  include("includes/footer.php");
+include("includes/footer.php");
 ?>
 
 <script src="js/jquery.min.js"> </script>
@@ -200,4 +204,5 @@
   });
 </script>
 </body>
+
 </html>

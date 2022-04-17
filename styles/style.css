@@ -685,7 +685,7 @@ color:red;
 #meter_wrapper{
 border:1px solid grey;
 width:202px;
-height:20px;
+height:40px;
 margin:0;
 border-radius:3px;
 
@@ -694,7 +694,7 @@ border-radius:3px;
 
 #meter{
 width:0px;
-height:18px;
+height:40px;
 border-radius:2px;
 
 }
