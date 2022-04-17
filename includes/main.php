@@ -25,10 +25,7 @@
             <?php items(); ?> items
           </a>
         </div>
-
-
         <ul class="login">
-
           <li class="login__item">
             <?php
             if (!isset($_SESSION['customer_email'])) {
@@ -38,8 +35,6 @@
             }
             ?>
           </li>
-
-
           <li class="login__item">
             <?php
             if (!isset($_SESSION['customer_email'])) {
@@ -48,7 +43,6 @@
               echo '<a href="./logout.php" class="login__link">Logout</a>';
             }
             ?>
-
           </li>
         </ul>
 

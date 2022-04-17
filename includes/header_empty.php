@@ -20,17 +20,13 @@
 	<link href="styles/backend.css" rel="stylesheet">
 	<link href="styles/style.css" rel="stylesheet">
 
-
 	<link rel="stylesheet" href="~/../assets/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/../assets/css/LineIcons.3.0.css" />
 	<link rel="stylesheet" href="~/../assets/css/tiny-slider.css" />
 	<link rel="stylesheet" href="~/../assets/css/glightbox.min.css" />
 	<link rel="stylesheet" href="~/../assets/css/main.css" />
 
-
 	<!-- <link href="styles/backend.css" rel="stylesheet"> -->
 	<!-- <link href="styles/style.css" rel="stylesheet"> -->
-
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-
 <body>

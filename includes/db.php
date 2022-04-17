@@ -1,5 +1,3 @@
 <?php
-
-$con = mysqli_connect("localhost", "root", "", "sportdb");
-
+    $con = mysqli_connect("localhost", "root", "", "sportdb");
 ?>
