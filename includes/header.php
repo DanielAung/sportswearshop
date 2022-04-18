@@ -247,7 +247,7 @@
               <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                 <ul id="nav" class="navbar-nav ms-auto">
                   <li class="nav-item">
-                    <a href="index.html" class="active" aria-label="Toggle navigation">Home</a>
+                    <a href="shop.php" class="active" aria-label="Toggle navigation">Shop</a>
                   </li>
                   <li class="nav-item">
                     <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Pages</a>
@@ -281,7 +281,13 @@
                     </ul>
                   </li>
                   <li class="nav-item">
-                    <a href="contact.html" aria-label="Toggle navigation">Contact Us</a>
+                    <a href="localstore.php" aria-label="Toggle navigation">Local store</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="terms.php" aria-label="Toggle navigation">Term of Use</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="contact.php" aria-label="Toggle navigation">Contact Us</a>
                   </li>
                 </ul>
               </div> <!-- navbar collapse -->

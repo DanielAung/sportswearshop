@@ -49,7 +49,7 @@
       </div>
     </div> -->
     <!-- bottomline -->
-    <!-- <div class="page-header__bottomline">
+    <div class="page-header__bottomline">
       <div class="container clearfix">
 
         <div class="logo">
@@ -128,5 +128,5 @@
           </ul>
         </nav>
       </div>
-    </div> -->
+    </div>
   </header>

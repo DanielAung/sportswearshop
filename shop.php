@@ -69,23 +69,28 @@ include("includes/footer.php");
       });
     });
     /// Hide And Show Code Ends ///
+
     /// Search Filters code Starts ///
     $(function() {
       $.fn.extend({
         filterTable: function() {
           return this.each(function() {
-            $(this).on('keyup', function() {
-              var $this = $(this),
-                search = $this.val().toLowerCase(),
-                target = $this.attr('data-filters'),
-                handle = $(target),
-                rows = handle.find('li a');
-              if (search == '') {
-                rows.show();
+            $(this).on('keyup', function(e) {
+              search = e.target.value.trim().toLowerCase();
+              target = $(this).attr('data-filters');
+              handle = $(target);
+              rows = handle.find('li a');
+              if (search !== '') {
+                rows.each(function(e) {
+                  if ($(rows[e]).text().trim().toLowerCase().indexOf(search) == -1) {
+                    $(rows[e]).hide();
+                  } else {
+                    $(rows[e]).show();
+                  }
+                });
               } else {
-                rows.each(function() {
-                  var $this = $(this);
-                  $this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
+                rows.each(function(e) {
+                  $(rows[e]).show();
                 });
               }
             });
