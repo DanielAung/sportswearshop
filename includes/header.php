@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="~/../assets/css/main.css" />
 
 <body>
-  <!-- Start Header Area -->
-  <header class="header navbar-area">
+ <!-- Start Header Area -->
+ <header class="header navbar-area">
     <!-- Start Topbar -->
     <div class="topbar">
       <div class="container">
@@ -66,28 +66,35 @@
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-12">
-            <!-- <div class="top-middle">
-              <ul class="useful-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about-us.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-              </ul>
-            </div> -->
           </div>
           <div class="col-lg-4 col-md-4 col-12">
             <div class="top-end">
               <div class="user">
                 <i class="lni lni-user"></i>
-                Hello
+                
+                <?php 
+                if (isset($_SESSION['customer_email'])) {
+                ?>
+                <a href="customer/my_account.php?my_orders">
+                  <?php echo $_SESSION['customer_email']; ?>
+                </a>
+
+                <?php
+                } else {
+                  ?>
+                <ul class="user-login">
+                  <li>
+                    <a href="customer/customer_login.php">Sign In</a>
+                  </li>
+                  <li>
+                    <a href="customer_register.php">Register</a>
+                  </li>
+                </ul>
+                  <?php
+                }
+                ?>
+                
               </div>
-              <ul class="user-login">
-                <li>
-                  <a href="./customer/customer_login.php">Sign In</a>
-                </li>
-                <li>
-                  <a href="customer_register.php">Register</a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
@@ -249,37 +256,21 @@
                   <li class="nav-item">
                     <a href="shop.php" class="active" aria-label="Toggle navigation">Shop</a>
                   </li>
+                  <?php 
+                    if (isset($_SESSION['customer_email'])) {
+                  ?>
                   <li class="nav-item">
-                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Pages</a>
+                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">My Account</a>
                     <ul class="sub-menu collapse" id="submenu-1-2">
-                      <li class="nav-item"><a href="about-us.html">About Us</a></li>
-                      <li class="nav-item"><a href="faq.html">Faq</a></li>
-                      <li class="nav-item"><a href="login.html">Login</a></li>
-                      <li class="nav-item"><a href="register.html">Register</a></li>
-                      <li class="nav-item"><a href="mail-success.html">Mail Success</a></li>
-                      <li class="nav-item"><a href="404.html">404 Error</a></li>
+                      <li class="nav-item"><a href="customer/my_account.php?my_orders">Orders</a></li>
+                      <li class="nav-item"><a href="customer/my_account.php?my_wishlist">Wishlist</a></li>
+                      <li class="nav-item"><a href="customer/my_account.php?edit_account">Account Info</a></li>
+                      <li class="nav-item"><a href="customer/my_account.php?change_pass">Change Password</a></li>
                     </ul>
                   </li>
-                  <li class="nav-item">
-                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-3" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Shop</a>
-                    <ul class="sub-menu collapse" id="submenu-1-3">
-                      <li class="nav-item"><a href="product-grids.html">Shop Grid</a></li>
-                      <li class="nav-item"><a href="product-list.html">Shop List</a></li>
-                      <li class="nav-item"><a href="product-details.html">shop Single</a></li>
-                      <li class="nav-item"><a href="cart.html">Cart</a></li>
-                      <li class="nav-item"><a href="checkout.html">Checkout</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Blog</a>
-                    <ul class="sub-menu collapse" id="submenu-1-4">
-                      <li class="nav-item"><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a>
-                      </li>
-                      <li class="nav-item"><a href="blog-single.html">Blog Single</a></li>
-                      <li class="nav-item"><a href="blog-single-sidebar.html">Blog Single
-                          Sibebar</a></li>
-                    </ul>
-                  </li>
+
+                  <?php } ?>
+                 
                   <li class="nav-item">
                     <a href="localstore.php" aria-label="Toggle navigation">Local store</a>
                   </li>
@@ -319,5 +310,5 @@
       </div>
     </div>
     <!-- End Header Bottom -->
-  </header>
-  <!-- End Header Area -->
+</header>
+<!-- End Header Area -->

@@ -47,7 +47,7 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 		<!-- panel-collapse collapse-data starts -->
 		<div class="panel-body">
 			<!-- panel-body Starts -->
-			<div class="input-group mb-3">
+			<div class="input-group">
 				<!-- input-group Starts -->
 				<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-manufacturer" placeholder="Filter Manufacturers">
 
