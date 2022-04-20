@@ -257,10 +257,10 @@ if (isset($_POST['register'])) {
     $from = "sad.ahmed22224@gmail.com";
     $message = "
             <h2>
-            Email Confirmation By Computerfever.com $c_name
+              Email Confirmation By Computerfever.com $c_name
             </h2>
             <a href='localhost/ecom_store/customer/my_account.php?$customer_confirm_code'>
-            Click Here To Confirm Email
+              Click Here To Confirm Email
              </a>
   ";
     $headers = "From: $from \r\n";

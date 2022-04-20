@@ -262,31 +262,19 @@ function getProducts()
             ";
         }
         echo "
-
         <div class='col-md-4 col-sm-6 center-responsive' >
-
             <div class='product' >
-
             <a href='$pro_url' >
-
                 <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
-
             </a>
-
             <div class='text' >
 
             <center>
-
                 <p class='btn btn-warning'> $manufacturer_name </p>
-
             </center>
-
             <hr>
-
             <h3><a href='$pro_url' >$pro_title</a></h3>
-
             <p class='price' > $product_price $product_psp_price </p>
-
             <p class='buttons' >
                 <a href='$pro_url' class='btn btn-default' >View details</a>
                 <a href='$pro_url' class='btn btn-danger'>
@@ -302,11 +290,8 @@ function getProducts()
     }
     /// getProducts function Code Ends ///
 }
-
 /// getProducts Function Ends ///
-
 /// getPaginator Function Starts ///
-
 function getPaginator()
 {
     /// getPaginator Function Code Starts ///

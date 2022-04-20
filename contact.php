@@ -26,7 +26,6 @@ include("includes/main.php");
       <!-- box-header Starts -->
       <center>
         <!-- center Starts -->
-
         <?php
           $get_contact_us = "select * from contact_us";
           $run_conatct_us = mysqli_query($con, $get_contact_us);

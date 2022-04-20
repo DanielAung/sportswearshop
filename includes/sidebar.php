@@ -265,7 +265,6 @@
 						} else {
 							$cat_image = "<img src='admin_area/other_images/$cat_image' width='20'>&nbsp;";
 						}
-
 						echo "
 							<li class='checkbox checkbox-primary' style='background:#dddddd;'>
 								<a>
@@ -294,13 +293,11 @@
 						} else {
 							$cat_image = "<img src='admin_area/other_images/$cat_image' width='20'>&nbsp;";
 						}
-
 						echo "
 							<li class='checkbox checkbox-primary'>
 								<a>
 									<label>
 										<input ";
-
 											if (isset($aCat[$cat_id])) {
 													echo "checked='checked'";
 												}
