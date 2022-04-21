@@ -31,8 +31,8 @@ include("includes/main.php");
           $about_short_desc = $row_about_us['about_short_desc'];
           $about_desc = $row_about_us['about_desc'];
         ?>
-        <h1> <?php echo $about_heading; ?> </h1>
-        <p class="lead"> <?php echo $about_short_desc; ?> </p>
+        <h1 class="text-center"> <?php echo $about_heading; ?> </h1>
+        <p class="lead py-3"> <?php echo $about_short_desc; ?> </p>
         <p> <?php echo $about_desc; ?> </p>
       </div><!-- box Ends -->
     </div><!-- col-md-12 Ends -->

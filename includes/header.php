@@ -280,6 +280,9 @@
                   <li class="nav-item">
                     <a href="contact.php" aria-label="Toggle navigation">Contact Us</a>
                   </li>
+                  <li class="nav-item">
+                    <a href="about.php" aria-label="Toggle navigation">About Us</a>
+                  </li>
                 </ul>
               </div> <!-- navbar collapse -->
             </nav>
