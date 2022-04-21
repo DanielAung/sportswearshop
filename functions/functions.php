@@ -268,7 +268,7 @@ function getProducts()
                 <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
             </a>
             <div class='text' >
-
+            
             <center>
                 <p class='btn btn-warning'> $manufacturer_name </p>
             </center>
@@ -281,7 +281,6 @@ function getProducts()
                     <i class='fa fa-shopping-cart' data-price=$pro_price></i> Add To Cart
                 </a>
             </p>
-
             </div>
                 $product_label
             </div>
@@ -331,7 +330,6 @@ function getPaginator()
         }
     }
     /// Categories Code Ends ///
-
     $sWhere = (count($aWhere) > 0 ? ' WHERE ' . implode(' or ', $aWhere) : '');
     $query = "select * from products " . $sWhere;
     $result = mysqli_query($db, $query);
