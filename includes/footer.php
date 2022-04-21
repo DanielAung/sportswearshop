@@ -81,11 +81,10 @@
     						<div class="single-footer f-link">
     							<h3>Information</h3>
     							<ul>
-    								<li><a href="javascript:void(0)">About Us</a></li>
-    								<li><a href="javascript:void(0)">Contact Us</a></li>
-    								<li><a href="javascript:void(0)">Downloads</a></li>
-    								<li><a href="javascript:void(0)">Sitemap</a></li>
-    								<li><a href="javascript:void(0)">FAQs Page</a></li>
+    								<li><a href="about.php">About Us</a></li>
+    								<li><a href="contact.php">Contact Us</a></li>
+    								<li><a href="terms.php">Term of use</a></li>
+    								<li><a href="localstore.php">LocalStore</a></li>
     							</ul>
     						</div>
     						<!-- End Single Widget -->

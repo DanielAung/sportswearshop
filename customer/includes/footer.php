@@ -6,7 +6,19 @@
 			<div class="footer-nav__col footer-nav__col--info">
 				<div class="footer-nav__heading">Information</div>
 				<ul class="footer-nav__list">
-					<li class="footer-nav__item">
+						<li>
+							<a href="../about.php">About Us</a>
+						</li>
+    					<li>
+							<a href="../contact.php">Contact Us</a>
+						</li>
+    					<li>
+							<a href="../terms.php">Term of use</a>
+						</li>
+    					<li>
+							<a href="../localstore.php">LocalStore</a>
+						</li>
+					<!-- <li class="footer-nav__item">
 						<a href="#" class="footer-nav__link">The brand</a>
 					</li>
 					<li class="footer-nav__item">
@@ -20,7 +32,7 @@
 					</li>
 					<li class="footer-nav__item">
 						<a href="#" class="footer-nav__link">Site map</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 
@@ -68,7 +80,6 @@
 					</li>
 				</ul>
 			</div>
-
 
 			<div class="footer-nav__col footer-nav__col--contacts">
 				<div class="footer-nav__heading">Contact details</div>
