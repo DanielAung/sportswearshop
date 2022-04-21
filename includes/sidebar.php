@@ -50,125 +50,78 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 			<div class="input-group">
 				<!-- input-group Starts -->
 				<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-manufacturer" placeholder="Filter Manufacturers">
-
-
 				<a class="input-group-text"> <i class="fa fa-search"></i> </a>
-
 			</div><!-- input-group Ends -->
 		</div><!-- panel-body Ends -->
 
 		<div class="panel-body scroll-menu">
 			<!-- panel-body scroll-menu Starts -->
-
 			<ul class="nav nav-pills nav-stacked category-menu flex-column pt-4" id="dev-manufacturer">
 				<!-- nav nav-pills nav-stacked category-menu Starts -->
 				<?php
-
-				$get_manfacturer = "select * from manufacturers where manufacturer_top='yes'";
-
-				$run_manfacturer = mysqli_query($con, $get_manfacturer);
+					$get_manfacturer = "select * from manufacturers where manufacturer_top='yes'";
+					$run_manfacturer = mysqli_query($con, $get_manfacturer);
 
 				while ($row_manfacturer = mysqli_fetch_array($run_manfacturer)) {
-
 					$manufacturer_id = $row_manfacturer['manufacturer_id'];
-
 					$manufacturer_title = $row_manfacturer['manufacturer_title'];
-
 					$manufacturer_image = $row_manfacturer['manufacturer_image'];
-
 					if ($manufacturer_image == "") {
 					} else {
-
 						$manufacturer_image = "
-
 						<img src='admin_area/other_images/$manufacturer_image' width='20px' >&nbsp;
-
 						";
 					}
-
 					echo "
-
 						<li style='background:#dddddd;' class='checkbox checkbox-primary'>
-
 						<a>
-
-						<label>
-
-						<input ";
-
-					if (isset($aMan[$manufacturer_id])) {
-						echo "checked='checked'";
-					}
-
-					echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
-
-					<span>
-					$manufacturer_image
-					$manufacturer_title
-					</span>
-
-					</label>
-
+							<label>
+									<input ";
+								if (isset($aMan[$manufacturer_id])) {
+									echo "checked='checked'";
+								}
+								echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
+								<span>
+									$manufacturer_image
+									$manufacturer_title
+								</span>
+							</label>
 					</a>
-
 					</li>
-
 					";
 				}
-
-
 				$get_manfacturer = "select * from manufacturers where manufacturer_top='no'";
-
 				$run_manfacturer = mysqli_query($con, $get_manfacturer);
 
 				while ($row_manfacturer = mysqli_fetch_array($run_manfacturer)) {
-
 					$manufacturer_id = $row_manfacturer['manufacturer_id'];
-
 					$manufacturer_title = $row_manfacturer['manufacturer_title'];
-
 					$manufacturer_image = $row_manfacturer['manufacturer_image'];
 
 					if ($manufacturer_image == "") {
 					} else {
-
 						$manufacturer_image = "
-
 							<img src='admin_area/other_images/$manufacturer_image' width='20px'> &nbsp;
-
 							";
 					}
-
 					echo "
-
 						<li class='checkbox checkbox-primary'>
-
 						<a>
-
-						<label>
-
-						<input ";
-
-					if (isset($aMan[$manufacturer_id])) {
-						echo "checked='checked'";
-					}
-
-					echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
-
-<span>
-$manufacturer_image
-$manufacturer_title
-</span>
-
-</label>
-
-</a>
-
-</li>
-
-";
+							<label>
+								<input ";
+								if (isset($aMan[$manufacturer_id])) {
+									echo "checked='checked'";
+								}
+								echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
+									<span>
+										$manufacturer_image
+										$manufacturer_title
+									</span>
+							</label>
+						</a>
+							</li>
+					";
 				}
-
 				?>
 			</ul><!-- nav nav-pills nav-stacked category-menu Ends -->
 		</div><!-- panel-body scroll-menu Ends -->
@@ -248,19 +201,19 @@ $manufacturer_title
 								<li class='checkbox checkbox-primary'>
 									<a>
 										<label>
-										<input ";
-					if (isset($aPCat[$p_cat_id])) {
-						echo "checked='checked'";
-					}
-					echo " type='checkbox' value='$p_cat_id' name='p_cat' class='get_p_cat' id='p_cat' >
-										<span>
-											$p_cat_image
-											$p_cat_title
-										</span>
+													<input ";
+								if (isset($aPCat[$p_cat_id])) {
+									echo "checked='checked'";
+								}
+								echo " type='checkbox' value='$p_cat_id' name='p_cat' class='get_p_cat' id='p_cat' >
+													<span>
+														$p_cat_image
+														$p_cat_title
+													</span>
 										</label>
 									</a>
 								</li>
-							";
+						";
 				}
 				?>
 			</ul><!-- nav nav-pills nav-stacked category-menu Ends -->
