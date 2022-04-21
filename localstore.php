@@ -19,33 +19,33 @@
 
 <div id="content">
   <!-- content Starts -->
-  <div class="container-fluid">
+  <div class="container">
     <!-- container Starts -->
     <div class="col-md-12">
       <!-- col-md-12 Starts -->
       <div class="services row">
         <!-- services row Starts -->
         <?php
-          $get_services = "select * from services";
+          $get_services = "select * from store";
           $run_services = mysqli_query($con, $get_services);
-          while ($row_services = mysqli_fetch_array($run_services)) {
-            $service_id = $row_services['service_id'];
-            $service_title = $row_services['service_title'];
-            $service_image = $row_services['service_image'];
-            $service_desc = $row_services['service_desc'];
-            $service_button = $row_services['service_button'];
-            $service_url = $row_services['service_url'];
+          while ($row_stores = mysqli_fetch_array($run_services)) {
+            $store_id = $row_stores['store_id'];
+            $store_title = $row_stores['store_title'];
+            $store_image = $row_stores['store_image'];
+            $store_desc = $row_stores['store_desc'];
+            $store_button = $row_stores['store_button'];
+            $store_url = $row_stores['store_url'];
         ?>
           <div class="col-md-4 col-sm-6 box">
             <!-- col-md-4 col-sm-6 box Starts -->
-            <img src="admin_area/services_images/<?php echo $service_image; ?>" class="img-responsive">
-            <h2 align="center"> <?php echo $service_title; ?> </h2>
+            <img src="admin_area/store_images/<?php echo $store_image; ?>" class="img-responsive">
+            <h2 align="center"> <?php echo $store_title; ?> </h2>
             <p>
-              <?php echo $service_desc; ?>
+              <?php echo $store_desc; ?>
             </p>
             <center>
-              <a href="<?php echo $service_url; ?>" class="btn btn-primary">
-                <?php echo $service_button; ?>
+              <a href="<?php echo $store_url; ?>" class="btn btn-primary">
+                <?php echo $store_button; ?>
               </a>
             </center>
           </div><!-- col-md-4 col-sm-6 box Ends -->
