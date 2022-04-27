@@ -1,9 +1,9 @@
 <?php
-session_start();
-include("includes/db.php");
-include("includes/header.php");
-include("functions/functions.php");
-include("includes/main.php");
+  session_start();
+  include("includes/db.php");
+  include("includes/header.php");
+  include("functions/functions.php");
+  include("includes/main.php");
 ?>
 
 <?php
@@ -102,7 +102,8 @@ include("includes/main.php");
           $email = $_POST['email'];
           $subject = "Welcome to my website";
           $msg = "I shall get you soon, thanks for sending us email";
-          $from = "sad.ahmed22224@gmail.com";
+          $from = "From: sad.ahmed22224@gmail.com \r\n";
+          $from .= "Content-type: text/html\r\n";
           mail($email, $subject, $msg, $from);
           echo "<h2 align='center'>Your message has been sent successfully</h2>";
         }
