@@ -4,7 +4,7 @@
 
 	<header class="page-header">
 		<!-- topline -->
-		<div class="page-header__topline">
+		<!-- <div class="page-header__topline">
 			<div class="container clearfix">
 
 				<div class="currency">
@@ -54,9 +54,9 @@
 
 
 			</div>
-		</div>
+		</div> -->
 		<!-- bottomline -->
-		<div class="page-header__bottomline">
+		<!-- <div class="page-header__bottomline">
 			<div class="container clearfix">
 
 				<div class="logo">
@@ -139,5 +139,5 @@
 					</ul>
 				</nav>
 			</div>
-		</div>
+		</div> -->
 	</header>

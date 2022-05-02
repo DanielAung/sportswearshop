@@ -274,12 +274,10 @@ function getProducts()
             </center>
             <hr>
             <h3><a href='$pro_url' >$pro_title</a></h3>
-            <p class='price' > $product_price $product_psp_price </p>
+            <p class='price'> $product_price $product_psp_price </p>
             <p class='buttons' >
-                <a href='$pro_url' class='btn btn-default' >View details</a>
-                <a href='$pro_url' class='btn btn-danger'>
-                    <i class='fa fa-shopping-cart' data-price=$pro_price></i> Add To Cart
-                </a>
+                <a href='details.php?pro_id=$pro_id' class='btn btn-default' >View details</a>
+              
             </p>
             </div>
                 $product_label

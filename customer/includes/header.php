@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,8 +31,8 @@
   <link rel="stylesheet" href="~/../assets/css/main.css" />
 
 <body>
- <!-- Start Header Area -->
- <header class="header navbar-area">
+  <!-- Start Header Area -->
+  <header class="header navbar-area">
     <!-- Start Topbar -->
     <div class="topbar">
       <div class="container">
@@ -78,29 +81,29 @@
             <div class="top-end">
               <div class="user">
                 <i class="lni lni-user"></i>
-                
-                <?php 
+
+                <?php
                 if (isset($_SESSION['customer_email'])) {
                 ?>
-                <a href="my_account.php?my_orders">
-                  <?php echo $_SESSION['customer_email']; ?>
-                </a>
+                  <a href="my_account.php?my_orders">
+                    <?php echo $_SESSION['customer_email']; ?>
+                  </a>
 
                 <?php
                 } else {
-                  ?>
-                <ul class="user-login">
-                  <li>
-                    <a href="./customer/customer_login.php">Sign In</a>
-                  </li>
-                  <li>
-                    <a href="customer_register.php">Register</a>
-                  </li>
-                </ul>
-                  <?php
+                ?>
+                  <ul class="user-login">
+                    <li>
+                      <a href="./customer/customer_login.php">Sign In</a>
+                    </li>
+                    <li>
+                      <a href="customer_register.php">Register</a>
+                    </li>
+                  </ul>
+                <?php
                 }
                 ?>
-                
+
               </div>
             </div>
           </div>
@@ -114,7 +117,7 @@
         <div class="row align-items-center">
           <div class="col-lg-3 col-md-3 col-7">
             <!-- Start Header Logo -->
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <img src="assets/images/logo/logo.svg" alt="Logo">
             </a>
             <!-- End Header Logo -->
@@ -155,23 +158,24 @@
               </div>
               <div class="navbar-cart">
                 <div class="wishlist">
-                  <a href="javascript:void(0)">
+                  <a href="my_account.php?my_wishlist">
                     <i class="lni lni-heart"></i>
-                    <span class="total-items">0</span>
+                    <span class="total-items"><?php echo $wishCount ?></span>
                   </a>
                 </div>
                 <div class="cart-items">
-                  <a href="javascript:void(0)" class="main-btn">
+                  <a href="../cart.php" class="main-btn">
                     <i class="lni lni-cart"></i>
-                    <span class="total-items">2</span>
+                    <span class="total-items"><?php echo $count ?></span>
                   </a>
                   <!-- Shopping Item -->
-                  <div class="shopping-item">
+                  <!-- <div class="shopping-item">
                     <div class="dropdown-cart-header">
                       <span>2 Items</span>
-                      <a href="cart.html">View Cart</a>
+                      <a href="../cart.php">View Cart</a>
                     </div>
                     <ul class="shopping-list">
+
                       <li>
                         <a href="javascript:void(0)" class="remove" title="Remove this item"><i class="lni lni-close"></i></a>
                         <div class="cart-img-head">
@@ -204,7 +208,7 @@
                         <a href="checkout.html" class="btn animate">Checkout</a>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   <!--/ End Shopping Item -->
                 </div>
               </div>
@@ -263,21 +267,22 @@
                   <li class="nav-item">
                     <a href="../shop.php" class="active" aria-label="Toggle navigation">Shop</a>
                   </li>
-                  <?php 
-                    if (isset($_SESSION['customer_email'])) {
+                  <?php
+                  if (isset($_SESSION['customer_email'])) {
                   ?>
-                  <li class="nav-item">
-                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">My Account</a>
-                    <ul class="sub-menu collapse" id="submenu-1-2">
-                      <li class="nav-item"><a href="my_account.php?my_orders">Orders</a></li>
-                      <li class="nav-item"><a href="my_account.php?my_wishlist">Wishlist</a></li>
-                      <li class="nav-item"><a href="my_account.php?edit_account">Account Info</a></li>
-                      <li class="nav-item"><a href="my_account.php?change_pass">Change Password</a></li>
-                    </ul>
-                  </li>
+                    <li class="nav-item">
+                      <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">My Account</a>
+                      <ul class="sub-menu collapse" id="submenu-1-2">
+                        <li class="nav-item"><a href="my_account.php?my_orders">Orders</a></li>
+                        <li class="nav-item"><a href="../cart.php">Cart</a></li>
+                        <li class="nav-item"><a href="my_account.php?my_wishlist">Wishlist</a></li>
+                        <li class="nav-item"><a href="my_account.php?edit_account">Account Info</a></li>
+                        <li class="nav-item"><a href="my_account.php?change_pass">Change Password</a></li>
+                      </ul>
+                    </li>
 
                   <?php } ?>
-                 
+
                   <li class="nav-item">
                     <a href="../localstore.php" aria-label="Toggle navigation">Local store</a>
                   </li>
@@ -317,5 +322,5 @@
       </div>
     </div>
     <!-- End Header Bottom -->
-</header>
-<!-- End Header Area -->
+  </header>
+  <!-- End Header Area -->

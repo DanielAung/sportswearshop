@@ -1,50 +1,50 @@
 <?php
-  session_start();
-  include("includes/db.php");
-  include("includes/header.php");
-  include("functions/functions.php");
-  include("includes/main.php");
+session_start();
+include("includes/db.php");
+include("includes/header.php");
+include("functions/functions.php");
+include("includes/main.php");
 ?>
 
 <?php
-  echo $_GET['pro_id'];
-  $product_id = @$_GET['pro_id'];
-  $get_product = "select * from products where product_id='$product_id'";
-  $run_product = mysqli_query($con, $get_product);
-  $check_product = mysqli_num_rows($run_product);
+echo $_GET['pro_id'];
+$product_id = @$_GET['pro_id'];
+$get_product = "select * from products where product_id='$product_id'";
+$run_product = mysqli_query($con, $get_product);
+$check_product = mysqli_num_rows($run_product);
 
-  if ($check_product == 0) {
-    echo "<script> window.open('index.php','_self') </script>";
+if ($check_product == 0) {
+  echo "<script> window.open('index.php','_self') </script>";
+} else {
+  $row_product = mysqli_fetch_array($run_product);
+  $p_cat_id = $row_product['p_cat_id'];
+  $pro_id = $row_product['product_id'];
+  $pro_title = $row_product['product_title'];
+  $pro_price = $row_product['product_price'];
+  $pro_desc = $row_product['product_desc'];
+  $pro_img1 = $row_product['product_img1'];
+  $pro_img2 = $row_product['product_img2'];
+  $pro_img3 = $row_product['product_img3'];
+  $pro_label = $row_product['product_label'];
+  $pro_psp_price = $row_product['product_psp_price'];
+  $pro_features = $row_product['product_features'];
+  $pro_video = $row_product['product_video'];
+  $status = $row_product['status'];
+  $pro_url = $row_product['product_url'];
+
+  if ($pro_label == "") {
   } else {
-    $row_product = mysqli_fetch_array($run_product);
-    $p_cat_id = $row_product['p_cat_id'];
-    $pro_id = $row_product['product_id'];
-    $pro_title = $row_product['product_title'];
-    $pro_price = $row_product['product_price'];
-    $pro_desc = $row_product['product_desc'];
-    $pro_img1 = $row_product['product_img1'];
-    $pro_img2 = $row_product['product_img2'];
-    $pro_img3 = $row_product['product_img3'];
-    $pro_label = $row_product['product_label'];
-    $pro_psp_price = $row_product['product_psp_price'];
-    $pro_features = $row_product['product_features'];
-    $pro_video = $row_product['product_video'];
-    $status = $row_product['status'];
-    $pro_url = $row_product['product_url'];
-
-    if ($pro_label == "") {
-    } else {
-      $product_label = "
+    $product_label = "
               <a class='label sale' href='#' style='color:black;'>
               <div class='thelabel'>$pro_label</div>
               <div class='label-background'> </div>
               </a>
           ";
-    }
-    $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
-    $run_p_cat = mysqli_query($con, $get_p_cat);
-    $row_p_cat = mysqli_fetch_array($run_p_cat);
-    $p_cat_title = $row_p_cat['p_cat_title'];
+  }
+  $get_p_cat = "select * from product_categories where p_cat_id='$p_cat_id'";
+  $run_p_cat = mysqli_query($con, $get_p_cat);
+  $row_p_cat = mysqli_fetch_array($run_p_cat);
+  $p_cat_title = $row_p_cat['p_cat_title'];
 ?>
   <main>
     <!-- HERO -->
@@ -116,42 +116,40 @@
             <!-- col-sm-6 Starts -->
             <div class="box">
               <!-- box Starts -->
-                <h1 class="text-center"> <?php echo $pro_title; ?> </h1>
+              <h1 class="text-center"> <?php echo $pro_title; ?> </h1>
               <?php
-                if (isset($_POST['add_cart'])) {
-                  $ip_add = getRealUserIp();
-                  $p_id = $pro_id;
-                  $product_qty = $_POST['product_qty'];
-                  $product_size = $_POST['product_size'];
-                  $check_product = "select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
-                  $run_check = mysqli_query($con, $check_product);
+              if (isset($_POST['add_cart'])) {
+                $ip_add = getRealUserIp();
+                $p_id = $pro_id;
+                $product_qty = $_POST['product_qty'];
+                $product_size = $_POST['product_size'];
+                $check_product = "select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
+                $run_check = mysqli_query($con, $check_product);
 
-                  if (mysqli_num_rows($run_check) > 0) {
-                    echo "<script>alert('This Product is already added in cart')</script>";
-                    echo "<script>window.open('$pro_url','_self')</script>";
+                if (mysqli_num_rows($run_check) > 0) {
+                  echo "<script>alert('This Product is already added in cart')</script>";
+                } else {
+                  $get_price = "select * from products where product_id='$p_id'";
+                  $run_price = mysqli_query($con, $get_price);
+                  $row_price = mysqli_fetch_array($run_price);
+                  $pro_price = $row_price['product_price'];
+                  $pro_psp_price = $row_price['product_psp_price'];
+                  $pro_label = $row_price['product_label'];
+
+                  if ($pro_label == "Sale" or $pro_label == "Gift") {
+                    $product_price = $pro_psp_price;
                   } else {
-                    $get_price = "select * from products where product_id='$p_id'";
-                    $run_price = mysqli_query($con, $get_price);
-                    $row_price = mysqli_fetch_array($run_price);
-                    $pro_price = $row_price['product_price'];
-                    $pro_psp_price = $row_price['product_psp_price'];
-                    $pro_label = $row_price['product_label'];
-
-                    if ($pro_label == "Sale" or $pro_label == "Gift") {
-                      $product_price = $pro_psp_price;
-                    } else {
-                      $product_price = $pro_price;
-                    }
-                    $query = "insert into cart (p_id,ip_add,qty,p_price,size) values ('$p_id','$ip_add','$product_qty','$product_price','$product_size')";
-                    $run_query = mysqli_query($db, $query);
-                    echo "<script>window.open('$pro_url','_self')</script>";
+                    $product_price = $pro_price;
                   }
+                  $query = "insert into cart (p_id,ip_add,qty,p_price,size) values ('$p_id','$ip_add','$product_qty','$product_price','$product_size')";
+                  $run_query = mysqli_query($db, $query);
                 }
+              }
               ?>
               <form action="" method="post" class="form-horizontal">
                 <!-- form-horizontal Starts -->
                 <?php
-                  if ($status == "product") {
+                if ($status == "product") {
                 ?>
                   <div class="form-group">
                     <!-- form-group Starts -->
@@ -160,12 +158,12 @@
                     <div class="col-md-7">
                       <!-- col-md-7 Starts -->
                       <select name="product_qty" class="form-control">
-                        <option>Select quantity</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option disabled>Select quantity</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                       </select>
                     </div><!-- col-md-7 Ends -->
                   </div><!-- form-group Ends -->
@@ -175,10 +173,10 @@
                     <div class="col-md-7">
                       <!-- col-md-7 Starts -->
                       <select name="product_size" class="form-control">
-                        <option>Select a Size</option>
-                        <option>Small</option>
-                        <option>Medium</option>
-                        <option>Large</option>
+                        <option disabled>Select a Size</option>
+                        <option value="small" selected>Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
                       </select>
                     </div><!-- col-md-7 Ends -->
                   </div><!-- form-group Ends -->
@@ -189,12 +187,12 @@
                     <div class="col-md-7">
                       <!-- col-md-7 Starts -->
                       <select name="product_qty" class="form-control">
-                        <option>Select quantity</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        <option disabled>Select quantity</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                       </select>
                     </div><!-- col-md-7 Ends -->
                   </div><!-- form-group Ends -->
@@ -259,33 +257,31 @@
                     <i class="fa fa-heart"></i> Add to Wishlist
                   </button>
                   <?php
-                      if (isset($_POST['add_wishlist'])) {
-                        if (!isset($_SESSION['customer_email'])) {
-                          echo "<script>alert('You Must Login To Add Product In Wishlist')</script>";
-                          echo "<script>window.open('checkout.php','_self')</script>";
-                        } else {
-                          $customer_session = $_SESSION['customer_email'];
-                          $get_customer = "select * from customers where customer_email='$customer_session'";
-                          $run_customer = mysqli_query($con, $get_customer);
-                          $row_customer = mysqli_fetch_array($run_customer);
-                          $customer_id = $row_customer['customer_id'];
-                          $select_wishlist = "select * from wishlist where customer_id='$customer_id' AND product_id='$pro_id'";
-                          $run_wishlist = mysqli_query($con, $select_wishlist);
-                          $check_wishlist = mysqli_num_rows($run_wishlist);
-                          if ($check_wishlist == 1) {
-                            echo "<script>alert('This Product Has Been already Added In Wishlist')</script>";
-                            echo "<script>window.open('$pro_url','_self')</script>";
-                          } else {
-                            $insert_wishlist = "insert into wishlist (customer_id,product_id) values ('$customer_id','$pro_id')";
-                            $run_wishlist = mysqli_query($con, $insert_wishlist);
+                  if (isset($_POST['add_wishlist'])) {
+                    if (!isset($_SESSION['customer_email'])) {
+                      echo "<script>alert('You Must Login To Add Product In Wishlist')</script>";
+                      echo "<script>window.open('checkout.php','_self')</script>";
+                    } else {
+                      $customer_session = $_SESSION['customer_email'];
+                      $get_customer = "select * from customers where customer_email='$customer_session'";
+                      $run_customer = mysqli_query($con, $get_customer);
+                      $row_customer = mysqli_fetch_array($run_customer);
+                      $customer_id = $row_customer['customer_id'];
+                      $select_wishlist = "select * from wishlist where customer_id='$customer_id' AND product_id='$pro_id'";
+                      $run_wishlist = mysqli_query($con, $select_wishlist);
+                      $check_wishlist = mysqli_num_rows($run_wishlist);
+                      if ($check_wishlist == 1) {
+                        echo "<script>alert('This Product Has Been already Added In Wishlist')</script>";
+                      } else {
+                        $insert_wishlist = "insert into wishlist (customer_id,product_id) values ('$customer_id','$pro_id')";
+                        $run_wishlist = mysqli_query($con, $insert_wishlist);
 
-                            if ($run_wishlist) {
-                              echo "<script> alert('Product Has Inserted Into Wishlist') </script>";
-                              echo "<script>window.open('$pro_url','_self')</script>";
-                            }
-                          }
+                        if ($run_wishlist) {
+                          echo "<script> alert('Product Has Inserted Into Wishlist') </script>";
                         }
                       }
+                    }
+                  }
                   ?>
                 </p><!-- text-center buttons Ends -->
               </form><!-- form-horizontal Ends -->
@@ -321,23 +317,23 @@
           <a class="btn btn-info tab" style="margin-bottom:10px;" href="#description" data-toggle="tab">
             <!-- btn btn-primary tab Starts -->
             <?php
-              if ($status == "product") {
-                echo "Product Description";
-              } else {
-                echo "Bundle Description";
-              }
+            if ($status == "product") {
+              echo "Product Description";
+            } else {
+              echo "Bundle Description";
+            }
             ?>
           </a><!-- btn btn-primary tab Ends -->
 
           <a class="btn btn-info tab" style="margin-bottom:10px;" href="#features" data-toggle="tab">
             <!-- btn btn-primary tab Starts -->
             Features
-            </a><!-- btn btn-primary tab Ends -->
+          </a><!-- btn btn-primary tab Ends -->
 
           <a class="btn btn-info tab" style="margin-bottom:10px;" href="#video" data-toggle="tab">
             <!-- btn btn-primary tab Starts -->
             Sounds and Videos
-            </a><!-- btn btn-primary tab Ends -->
+          </a><!-- btn btn-primary tab Ends -->
           <hr style="margin-top:0px;">
           <div class="tab-content">
             <!-- tab-content Starts -->
@@ -358,7 +354,7 @@
         <div id="row same-height-row">
           <!-- row same-height-row Starts -->
           <?php
-            if ($status == "product") {
+          if ($status == "product") {
           ?>
             <div class="col-md-3 col-sm-6">
               <!-- col-md-3 col-sm-6 Starts -->
@@ -368,46 +364,45 @@
               </div><!-- box same-height headline Ends -->
             </div><!-- col-md-3 col-sm-6 Ends -->
             <?php
-              $get_products = "select * from products order by rand() LIMIT 0,3";
-              $run_products = mysqli_query($con, $get_products);
-               while ($row_products = mysqli_fetch_array($run_products)) {
-                  $pro_id = $row_products['product_id'];
-                  $pro_title = $row_products['product_title'];
-                  $pro_price = $row_products['product_price'];
-                  $pro_img1 = $row_products['product_img1'];
-                  $pro_label = $row_products['product_label'];
+            $get_products = "select * from products order by rand() LIMIT 0,3";
+            $run_products = mysqli_query($con, $get_products);
+            while ($row_products = mysqli_fetch_array($run_products)) {
+              $pro_id = $row_products['product_id'];
+              $pro_title = $row_products['product_title'];
+              $pro_price = $row_products['product_price'];
+              $pro_img1 = $row_products['product_img1'];
+              $pro_label = $row_products['product_label'];
 
-                  $manufacturer_id = $row_products['manufacturer_id'];
-                  $get_manufacturer = "select * from manufacturers where manufacturer_id='$manufacturer_id'";
-                  $run_manufacturer = mysqli_query($db, $get_manufacturer);
-                  $row_manufacturer = mysqli_fetch_array($run_manufacturer);
-                  $manufacturer_name = $row_manufacturer['manufacturer_title'];
-                  $pro_psp_price = $row_products['product_psp_price'];
-                  $pro_url = $row_products['product_url'];
-                  if ($pro_label == "Sale" or $pro_label == "Gift") {
-                    $product_price = "<del> $$pro_price </del>";
-                    $product_psp_price = "| $$pro_psp_price";
-                  } else {
-                    $product_psp_price = "";
-                    $product_price = "$$pro_price";
-                  }
+              $manufacturer_id = $row_products['manufacturer_id'];
+              $get_manufacturer = "select * from manufacturers where manufacturer_id='$manufacturer_id'";
+              $run_manufacturer = mysqli_query($db, $get_manufacturer);
+              $row_manufacturer = mysqli_fetch_array($run_manufacturer);
+              $manufacturer_name = $row_manufacturer['manufacturer_title'];
+              $pro_psp_price = $row_products['product_psp_price'];
+              $pro_url = $row_products['product_url'];
+              if ($pro_label == "Sale" or $pro_label == "Gift") {
+                $product_price = "<del> $$pro_price </del>";
+                $product_psp_price = "| $$pro_psp_price";
+              } else {
+                $product_psp_price = "";
+                $product_price = "$$pro_price";
+              }
 
-                  if ($pro_label == "") {
-                  } else {
-                    $product_label = "
+              if ($pro_label == "") {
+              } else {
+                $product_label = "
                                     <a class='label sale' href='#' style='color:black;'>
                                       <div class='thelabel'>$pro_label</div>
                                       <div class='label-background'> </div>
                                     </a>
                                     ";
-                  }
-                  echo "
+              }
+              echo "
 
                       <div class='col-md-3 col-sm-6 center-responsive' >
                       <div class='product' >
-                      <a href='$pro_url' >
+                     
                         <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
-                      </a>
                       <div class='text' >
                       <center>
                         <p class='btn btn-warning'> $manufacturer_name </p>
@@ -426,7 +421,7 @@
                       </div>
                       </div>
                       ";
-                }
+            }
             ?>
           <?php } else { ?>
             <div class="box same-height">
@@ -434,46 +429,46 @@
               <h3 class="text-center"> Bundle Products </h3>
             </div><!-- box same-height Ends -->
             <?php
-                $get_bundle_product_relation = "select * from bundle_product_relation where bundle_id='$pro_id'";
-                $run_bundle_product_relation = mysqli_query($con, $get_bundle_product_relation);
-                while ($row_bundle_product_relation = mysqli_fetch_array($run_bundle_product_relation)) {
-                  $bundle_product_relation_product_id = $row_bundle_product_relation['product_id'];
-                  $get_products = "select * from products where product_id='$bundle_product_relation_product_id'";
-                  $run_products = mysqli_query($con, $get_products);
+            $get_bundle_product_relation = "select * from bundle_product_relation where bundle_id='$pro_id'";
+            $run_bundle_product_relation = mysqli_query($con, $get_bundle_product_relation);
+            while ($row_bundle_product_relation = mysqli_fetch_array($run_bundle_product_relation)) {
+              $bundle_product_relation_product_id = $row_bundle_product_relation['product_id'];
+              $get_products = "select * from products where product_id='$bundle_product_relation_product_id'";
+              $run_products = mysqli_query($con, $get_products);
 
-                  while ($row_products = mysqli_fetch_array($run_products)) {
-                    $pro_id = $row_products['product_id'];
-                    $pro_title = $row_products['product_title'];
-                    $pro_price = $row_products['product_price'];
-                    $pro_img1 = $row_products['product_img1'];
-                    $pro_label = $row_products['product_label'];
+              while ($row_products = mysqli_fetch_array($run_products)) {
+                $pro_id = $row_products['product_id'];
+                $pro_title = $row_products['product_title'];
+                $pro_price = $row_products['product_price'];
+                $pro_img1 = $row_products['product_img1'];
+                $pro_label = $row_products['product_label'];
 
-                    $manufacturer_id = $row_products['manufacturer_id'];
-                    $get_manufacturer = "select * from manufacturers where manufacturer_id='$manufacturer_id'";
-                    $run_manufacturer = mysqli_query($db, $get_manufacturer);
-                    $row_manufacturer = mysqli_fetch_array($run_manufacturer);
-                    $manufacturer_name = $row_manufacturer['manufacturer_title'];
-                    $pro_psp_price = $row_products['product_psp_price'];
-                    $pro_url = $row_products['product_url'];
+                $manufacturer_id = $row_products['manufacturer_id'];
+                $get_manufacturer = "select * from manufacturers where manufacturer_id='$manufacturer_id'";
+                $run_manufacturer = mysqli_query($db, $get_manufacturer);
+                $row_manufacturer = mysqli_fetch_array($run_manufacturer);
+                $manufacturer_name = $row_manufacturer['manufacturer_title'];
+                $pro_psp_price = $row_products['product_psp_price'];
+                $pro_url = $row_products['product_url'];
 
-                    if ($pro_label == "Sale" or $pro_label == "Gift") {
-                      $product_price = "<del> $$pro_price </del>";
-                      $product_psp_price = "| $$pro_psp_price";
-                    } else {
-                      $product_psp_price = "";
-                      $product_price = "$$pro_price";
-                    }
+                if ($pro_label == "Sale" or $pro_label == "Gift") {
+                  $product_price = "<del> $$pro_price </del>";
+                  $product_psp_price = "| $$pro_psp_price";
+                } else {
+                  $product_psp_price = "";
+                  $product_price = "$$pro_price";
+                }
 
-                    if ($pro_label == "") {
-                    } else {
-                      $product_label = "
+                if ($pro_label == "") {
+                } else {
+                  $product_label = "
                           <a class='label sale' href='#' style='color:black;'>
                             <div class='thelabel'>$pro_label</div>
                             <div class='label-background'> </div>
                           </a>
                         ";
-                    }
-                    echo "
+                }
+                echo "
                       <div class='col-md-3 col-sm-6 center-responsive' >
                       <div class='product' >
                       <a href='$pro_url' >
@@ -497,8 +492,8 @@
                       </div>
                       </div>
                       ";
-                  }
-                }
+              }
+            }
             ?>
           <?php } ?>
         </div><!-- row same-height-row Ends -->
@@ -506,10 +501,11 @@
     </div><!-- container Ends -->
   </div><!-- content Ends -->
   <?php
-    include("includes/footer.php");
+  include("includes/footer.php");
   ?>
   <script src="js/jquery.min.js"> </script>
   <script src="js/bootstrap.min.js"></script>
   </body>
+
   </html>
 <?php } ?>
