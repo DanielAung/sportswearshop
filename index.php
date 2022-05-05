@@ -56,7 +56,7 @@ if (isset($_GET['add_cart'])) {
       <div class="col-12">
         <div class="section-title">
           <h2>Trending Product</h2>
-          <p>There are many variations of passages of Lorem Ipsum available, but the majority have
+          <p>There are many variations of passages of the directionsportswear available, but the shop have
             suffered alteration in some form.</p>
         </div>
       </div>

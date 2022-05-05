@@ -103,7 +103,7 @@ $count = mysqli_num_rows($run_cart);
           <div class="col-lg-3 col-md-3 col-7">
             <!-- Start Header Logo -->
             <a class="navbar-brand" href="index.php">
-              <img src="./images/TheDirection.png" alt="Logo">
+              <img src="./images/thedirection.png" alt="Logo">
             </a>
             <!-- End Header Logo -->
           </div>

@@ -8,7 +8,7 @@
     					<div class="col-lg-3 col-md-4 col-12">
     						<div class="footer-logo">
     							<a href="index.html">
-    								<img src="assets/images/logo/white-logo.svg" alt="#">
+    								<img src="./images/thedirection.png" alt="#">
     							</a>
     						</div>
     					</div>
@@ -40,7 +40,7 @@
     				<div class="row">
     					<div class="col-lg-3 col-md-6 col-12">
     						<!-- Single Widget -->
-    						<div class="single-footer f-contact">
+    						<!-- <div class="single-footer f-contact">
     							<h3>Get In Touch With Us</h3>
     							<p class="phone">Phone: +1 (900) 33 169 7720</p>
     							<ul>
@@ -50,12 +50,12 @@
     							<p class="mail">
     								<a href="mailto:support@shopgrids.com">support@shopgrids.com</a>
     							</p>
-    						</div>
+    						</div> -->
     						<!-- End Single Widget -->
     					</div>
     					<div class="col-lg-3 col-md-6 col-12">
     						<!-- Single Widget -->
-    						<div class="single-footer our-app">
+    						<!-- <div class="single-footer our-app">
     							<h3>Our Mobile App</h3>
     							<ul class="app-btn">
     								<li>
@@ -73,7 +73,7 @@
     									</a>
     								</li>
     							</ul>
-    						</div>
+    						</div> -->
     						<!-- End Single Widget -->
     					</div>
     					<div class="col-lg-3 col-md-6 col-12">
@@ -91,7 +91,7 @@
     					</div>
     					<div class="col-lg-3 col-md-6 col-12">
     						<!-- Single Widget -->
-    						<div class="single-footer f-link">
+    						<!-- <div class="single-footer f-link">
     							<h3>Shop Departments</h3>
     							<ul>
     								<li><a href="javascript:void(0)">Computers & Accessories</a></li>
@@ -100,7 +100,7 @@
     								<li><a href="javascript:void(0)">Cameras, Photo & Video</a></li>
     								<li><a href="javascript:void(0)">Headphones</a></li>
     							</ul>
-    						</div>
+    						</div> -->
     						<!-- End Single Widget -->
     					</div>
     				</div>
