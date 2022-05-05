@@ -31,16 +31,16 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 	<!-- panel panel-default sidebar-menu Starts -->
 	<div class="panel-heading">
 		<!-- panel-heading Starts -->
-		<h3 class="panel-title">
+		<div class="panel-title">
 			<!-- panel-title Starts -->
-			Manufacturers
+			<h5 class="pull-left">Manufacturers</h5>
 			<div class="pull-right">
 				<!-- pull-right Starts -->
 				<a href="#" style="color:black;">
 					<span class="nav-toggle hide-show">Hide</span>
 				</a>
 			</div><!-- pull-right Ends -->
-		</h3><!-- panel-title Ends -->
+		</div><!-- panel-title Ends -->
 	</div><!-- panel-heading Ends -->
 
 	<div class="panel-collapse collapse-data">
@@ -56,11 +56,11 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 
 		<div class="panel-body scroll-menu">
 			<!-- panel-body scroll-menu Starts -->
-			<ul class="nav nav-pills nav-stacked category-menu flex-column pt-4" id="dev-manufacturer">
+			<ul class="nav nav-pills nav-stacked category-menu flex-column pt-2 ps-3" id="dev-manufacturer">
 				<!-- nav nav-pills nav-stacked category-menu Starts -->
 				<?php
-					$get_manfacturer = "select * from manufacturers where manufacturer_top='yes'";
-					$run_manfacturer = mysqli_query($con, $get_manfacturer);
+				$get_manfacturer = "select * from manufacturers where manufacturer_top='yes'";
+				$run_manfacturer = mysqli_query($con, $get_manfacturer);
 
 				while ($row_manfacturer = mysqli_fetch_array($run_manfacturer)) {
 					$manufacturer_id = $row_manfacturer['manufacturer_id'];
@@ -77,10 +77,10 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 						<a>
 							<label>
 									<input ";
-								if (isset($aMan[$manufacturer_id])) {
-									echo "checked='checked'";
-								}
-								echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
+					if (isset($aMan[$manufacturer_id])) {
+						echo "checked='checked'";
+					}
+					echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
 								<span>
 									$manufacturer_image
 									$manufacturer_title
@@ -109,10 +109,10 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 						<a>
 							<label>
 								<input ";
-								if (isset($aMan[$manufacturer_id])) {
-									echo "checked='checked'";
-								}
-								echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
+					if (isset($aMan[$manufacturer_id])) {
+						echo "checked='checked'";
+					}
+					echo " type='checkbox' value='$manufacturer_id' name='manufacturer' class='get_manufacturer'>
 									<span>
 										$manufacturer_image
 										$manufacturer_title
@@ -131,16 +131,16 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 	<!--- panel panel-default sidebar-menu Starts -->
 	<div class="panel-heading">
 		<!-- panel-heading Starts -->
-		<h3 class="panel-title">
+		<div class="panel-title">
 			<!-- panel-title Starts -->
-			Products Categories
+			<h5 class="pull-left">Products Categories</h5>
 			<div class="pull-right">
 				<!-- pull-right Starts -->
 				<a href="#" style="color:black;">
 					<span class="nav-toggle hide-show">Hide</span>
 				</a>
 			</div><!-- pull-right Ends -->
-		</h3><!-- panel-title Ends -->
+		</div><!-- panel-title Ends -->
 	</div><!-- panel-heading Ends -->
 
 	<div class="panel-collapse collapse-data">
@@ -150,13 +150,13 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 			<div class="input-group">
 				<!-- input-group Starts -->
 				<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-p-cats" placeholder="Filter Product Categories">
-				<a class="input-group-addon"> <i class="fa fa-search"></i> </a>
+				<a class="input-group-text"> <i class="fa fa-search"></i> </a>
 			</div><!-- input-group Ends -->
 		</div><!-- panel-body Ends -->
 
 		<div class="panel-body scroll-menu">
 			<!-- panel-body scroll-menu Starts -->
-			<ul class="nav nav-pills nav-stacked category-menu" id="dev-p-cats">
+			<ul class="nav nav-pills nav-stacked category-menu pt-2 ps-3" id="dev-p-cats">
 				<!-- nav nav-pills nav-stacked category-menu Starts -->
 				<?php
 				$get_p_cats = "select * from product_categories where p_cat_top='yes'";
@@ -170,7 +170,7 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 						$p_cat_image = "<img src='admin_area/other_images/$p_cat_image' width='20'> &nbsp;";
 					}
 					echo "
-						<li class='checkbox checkbox-primary' style='background:#dddddd;' >
+						<li class='checkbox checkbox-primary w-100' style='background:#dddddd;' >
 							<a>
 								<label>
 									<input ";
@@ -198,14 +198,14 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 						$p_cat_image = "<img src='admin_area/other_images/$p_cat_image' width='20'> &nbsp;";
 					}
 					echo "
-								<li class='checkbox checkbox-primary'>
+								<li class='checkbox checkbox-primary w-100'>
 									<a>
 										<label>
 													<input ";
-								if (isset($aPCat[$p_cat_id])) {
-									echo "checked='checked'";
-								}
-								echo " type='checkbox' value='$p_cat_id' name='p_cat' class='get_p_cat' id='p_cat' >
+					if (isset($aPCat[$p_cat_id])) {
+						echo "checked='checked'";
+					}
+					echo " type='checkbox' value='$p_cat_id' name='p_cat' class='get_p_cat' id='p_cat' >
 													<span>
 														$p_cat_image
 														$p_cat_title
@@ -225,16 +225,16 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 	<!--- panel panel-default sidebar-menu Starts -->
 	<div class="panel-heading">
 		<!-- panel-heading Starts -->
-		<h3 class="panel-title">
+		<div class="panel-title">
 			<!-- panel-title Starts -->
-			Categories
+			<h5 class="pull-left">Categories</h5>
 			<div class="pull-right">
 				<!-- pull-right Starts -->
 				<a href="#" style="color:black;">
 					<span class="nav-toggle hide-show">Hide</span>
 				</a>
 			</div><!-- pull-right Ends -->
-		</h3><!-- panel-title Ends -->
+		</div><!-- panel-title Ends -->
 	</div><!-- panel-heading Ends -->
 
 	<div class="panel-collapse collapse-data">
@@ -244,13 +244,13 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 			<div class="input-group">
 				<!-- input-group Starts -->
 				<input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-cats" placeholder="Filter Categories">
-				<a class="input-group-addon"> <i class="fa fa-search"> </i> </a>
+				<a class="input-group-text"> <i class="fa fa-search"> </i> </a>
 			</div><!-- input-group Ends -->
 		</div><!-- panel-body Ends -->
 
 		<div class="panel-body scroll-menu">
 			<!-- panel-body scroll-menu Starts -->
-			<ul class="nav nav-pills nav-stacked category-menu" id="dev-cats">
+			<ul class="nav nav-pills nav-stacked category-menu pt-2 ps-3" id="dev-cats">
 				<!-- nav nav-pills nav-stacked category-menu Starts -->
 				<?php
 				$get_cat = "select * from categories where cat_top='yes'";
@@ -265,7 +265,7 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 					}
 
 					echo "
-							<li class='checkbox checkbox-primary' style='background:#dddddd;'>
+							<li class='checkbox checkbox-primary w-100' style='background:#dddddd;'>
 								<a>
 									<label>
 										<input ";
@@ -294,7 +294,7 @@ if (isset($_REQUEST['cat']) && is_array($_REQUEST['cat'])) {
 					}
 
 					echo "
-							<li class='checkbox checkbox-primary'>
+							<li class='checkbox checkbox-primary w-100'>
 								<a>
 									<label>
 										<input ";

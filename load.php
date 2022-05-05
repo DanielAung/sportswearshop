@@ -4,7 +4,7 @@
     include("functions/functions.php");
     switch($_REQUEST['sAction']){
     default :
-    getProducts();
+        getProducts('shop');
     break;
     case'getPaginator';
     getPaginator();

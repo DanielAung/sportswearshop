@@ -1,5 +1,23 @@
 <?php
-
+$total = 0;
+function getRealUserIpLocal()
+{
+  switch (true) {
+    case (!empty($_SERVER['HTTP_X_REAL_IP'])):
+      return $_SERVER['HTTP_X_REAL_IP'];
+    case (!empty($_SERVER['HTTP_CLIENT_IP'])):
+      return $_SERVER['HTTP_CLIENT_IP'];
+    case (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])):
+      return $_SERVER['HTTP_X_FORWARDED_FOR'];
+    default:
+      return $_SERVER['REMOTE_ADDR'];
+  }
+}
+$ip_add = getRealUserIpLocal();
+$select_cart = "select * from cart inner join products where ip_add='$ip_add' and cart.p_id=products.product_id";
+$con = mysqli_connect("localhost", "root", "", "sportdb");
+$run_cart = mysqli_query($con, $select_cart);
+$count = mysqli_num_rows($run_cart);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,33 +57,7 @@
         <div class="row align-items-center">
           <div class="col-lg-4 col-md-4 col-12">
             <div class="top-left">
-              <ul class="menu-top-link">
-                <li>
-                  <div class="select-position">
-                    <select id="select4">
-                      <option value="0" selected>$ USD</option>
-                      <option value="1">€ EURO</option>
-                      <option value="2">$ CAD</option>
-                      <option value="3">₹ INR</option>
-                      <option value="4">¥ CNY</option>
-                      <option value="5">৳ BDT</option>
-                    </select>
-                  </div>
-                </li>
-                <li>
-                  <div class="select-position">
-                    <select id="select5">
-                      <option value="0" selected>English</option>
-                      <option value="1">Español</option>
-                      <option value="2">Filipino</option>
-                      <option value="3">Français</option>
-                      <option value="4">العربية</option>
-                      <option value="5">हिन्दी</option>
-                      <option value="6">বাংলা</option>
-                    </select>
-                  </div>
-                </li>
-              </ul>
+
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-12">
@@ -159,42 +151,44 @@
                 <div class="cart-items">
                   <a href="javascript:void(0)" class="main-btn">
                     <i class="lni lni-cart"></i>
-                    <span class="total-items">2</span>
+                    <span class="total-items"><?php echo $count ?></span>
                   </a>
                   <!-- Shopping Item -->
                   <div class="shopping-item">
                     <div class="dropdown-cart-header">
-                      <span>2 Items</span>
-                      <a href="cart.html">View Cart</a>
+                      <span><?php echo $count ?> Items</span>
+                      <a href="cart.php">View Cart</a>
                     </div>
                     <ul class="shopping-list">
-                      <li>
-                        <a href="javascript:void(0)" class="remove" title="Remove this item"><i class="lni lni-close"></i></a>
-                        <div class="cart-img-head">
-                          <a class="cart-img" href="product-details.html"><img src="assets/images/header/cart-items/item1.jpg" alt="#"></a>
-                        </div>
 
-                        <div class="content">
-                          <h4><a href="product-details.html">
-                              Apple Watch Series 6</a></h4>
-                          <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                        </div>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)" class="remove" title="Remove this item"><i class="lni lni-close"></i></a>
-                        <div class="cart-img-head">
-                          <a class="cart-img" href="product-details.html"><img src="assets/images/header/cart-items/item2.jpg" alt="#"></a>
-                        </div>
-                        <div class="content">
-                          <h4><a href="product-details.html">Wi-Fi Smart Camera</a></h4>
-                          <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                        </div>
-                      </li>
+                      <?php while ($row_products = mysqli_fetch_array($run_cart)) {
+
+                        $p_id = $row_products['p_id'];
+                        $product_title = $row_products['product_title'];
+                        $product_img1 = $row_products['product_img1'];
+                        $qty = $row_products['qty'];
+                        $price = $row_products['product_price'];
+                        $subtotal = $qty * $price;
+                        $_SESSION['pro_qty'] = $qty;
+                        $total += $subtotal;
+                      ?>
+                        <li>
+                          <div class="cart-img-head">
+                            <a class="cart-img" href="details.php?pro_id=<? echo $p_id ?>"><img src="admin_area/product_images/<?php echo $product_img1 ?>" alt="#"></a>
+                          </div>
+
+                          <div class="content">
+                            <h4><a href="details.php?pro_id=<? echo $p_id ?>">
+                                <?php echo $product_title ?></a></h4>
+                            <p class="quantity"><?php echo $qty ?>x - <span class="amount"><?php echo $qty * $price ?>.00</span></p>
+                          </div>
+                        </li>
+                      <?php } ?>
                     </ul>
                     <div class="bottom">
                       <div class="total">
                         <span>Total</span>
-                        <span class="total-amount">$134.00</span>
+                        <span class="total-amount"><?php echo $total ?>.00</span>
                       </div>
                       <div class="button">
                         <a href="checkout.html" class="btn animate">Checkout</a>

@@ -4,6 +4,8 @@ include("includes/db.php");
 include("includes/header.php");
 include("functions/functions.php");
 include("includes/main.php");
+
+
 if (isset($_GET['add_cart'])) {
   echo "works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
   $ip_add = getRealUserIp();
@@ -15,7 +17,7 @@ if (isset($_GET['add_cart'])) {
 
   if (mysqli_num_rows($run_check) > 0) {
     echo "<script>alert('This Product is already added in cart')</script>";
-    echo "<script>window.open('$pro_url','_self')</script>";
+    echo "<script>window.open('shop.php,'_self')</script>";
   } else {
     $get_price = "select * from products where product_id='$p_id'";
     $run_price = mysqli_query($con, $get_price);
@@ -31,7 +33,7 @@ if (isset($_GET['add_cart'])) {
     }
     $query = "insert into cart (p_id,ip_add,qty,p_price,size) values ('$p_id','$ip_add','$product_qty','$product_price','$product_size')";
     $run_query = mysqli_query($db, $query);
-    echo "<script>window.open('$pro_url','_self')</script>";
+    echo "<script>window.open('shop.php','_self')</script>";
   }
 }
 ?>
@@ -40,7 +42,7 @@ if (isset($_GET['add_cart'])) {
   <!-- HERO -->
   <div class="nero">
     <div class="nero__heading">
-      <span class="nero__bold">shop</span> AT AVE
+      <span class="nero__bold">shop</span> AT The Direction
     </div>
     <p class="nero__text">
     </p>
@@ -51,9 +53,6 @@ if (isset($_GET['add_cart'])) {
   <div class="container">
     <div class="row">
       <!-- container Starts -->
-      <div class="col-md-12">
-        <!--- col-md-12 Starts -->
-      </div>
       <!--- col-md-12 Ends -->
       <div class="col-md-3">
         <!-- col-md-3 Starts -->
@@ -64,20 +63,24 @@ if (isset($_GET['add_cart'])) {
         <!-- col-md-9 Starts --->
         <div class="row" id="Products">
           <div id="wait"></div>
-          <?php getProducts(); ?>
+          <?php getProducts('shop'); ?>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <nav class="d-flex mt-4" aria-label="Page navigation example">
+              <ul class="pagination mx-auto">
+                <?php getPaginator(); ?>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div><!-- row Ends -->
     </div>
 
-    <center>
-      <!-- center Starts -->
-      <ul class="pagination">
-        <!-- pagination Starts -->
-        <?php getPaginator(); ?>
-      </ul><!-- pagination Ends -->
-    </center><!-- center Ends -->
+    <!-- center Starts -->
   </div><!-- col-md-9 Ends --->
 </div>
+
 <!--- wait Ends -->
 </div><!-- container Ends -->
 </div><!-- content Ends -->

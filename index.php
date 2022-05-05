@@ -17,11 +17,12 @@ if (isset($_GET['add_cart'])) {
 
   if (mysqli_num_rows($run_check) > 0) {
     echo "<script>alert('This Product is already added in cart')</script>";
-    echo "<script>window.open('$pro_url','_self')</script>";
+    echo "<script>window.open('index.php','_self')</script>";
   } else {
     $get_price = "select * from products where product_id='$p_id'";
     $run_price = mysqli_query($con, $get_price);
     $row_price = mysqli_fetch_array($run_price);
+
     $pro_price = $row_price['product_price'];
     $pro_psp_price = $row_price['product_psp_price'];
     $pro_label = $row_price['product_label'];
@@ -71,7 +72,7 @@ if (isset($_GET['add_cart'])) {
             <div class="product-image">
               <img src="admin_area/product_images/<?php echo $products[$i]['pro_img1'] ?>" alt="#">
               <div class="button">
-                <a href="index.php?add_cart=" class="btn"><i class="lni lni-cart"></i>
+                <a href="index.php?add_cart=<?php echo $products[$i]['pro_id'] ?>" class="btn"><i class="lni lni-cart"></i>
                   Add to Cart
                 </a>
               </div>

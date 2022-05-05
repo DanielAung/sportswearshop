@@ -1204,11 +1204,6 @@ top: -1px;
 }
 
 /* Pagination CSS */
-.pagination {
-  text-align: left;
-  margin: 40px 0 0 0;
-  display: block;
-}
 
 .pagination.center {
   text-align: center;

@@ -184,7 +184,7 @@ function getPro()
 }
 // getPro function Ends //
 /// getProducts Function Starts ///
-function getProducts()
+function getProducts($pageName)
 {
     /// getProducts function Code Starts ///
     global $db;
@@ -262,27 +262,31 @@ function getProducts()
             ";
         }
         echo "
-        <div class='col-md-4 col-sm-6 center-responsive' >
-            <div class='product' >
-            <a href='$pro_url' >
-                <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
-            </a>
-            <div class='text' >
-            
-            <center>
-                <p class='btn btn-warning'> $manufacturer_name </p>
-            </center>
-            <hr>
-            <h3><a href='$pro_url' >$pro_title</a></h3>
-            <p class='price'> $product_price $product_psp_price </p>
-            <p class='buttons' >
-                <a href='details.php?pro_id=$pro_id' class='btn btn-default' >View details</a>
-              
-            </p>
+        <div class='col-lg-3 col-md-6 col-12'>
+          <!-- Start Single Product -->
+          <div class='single-product'>
+            <div class='product-image'>
+              <img src='admin_area/product_images/$pro_img1' alt='#'>
+              <div class='button'>
+                <a href='details.php?pro_id=$pro_id' class='btn'><i class='lni lni-eye'></i>
+                  View Detail
+                </a>
+              </div>
             </div>
-                $product_label
+            <div class='product-info'>
+              <span class='category'>$manufacturer_name</span>
+              <h4 class='title'>
+                <a href='details.php?pro_id=$pro_id'>$pro_title</a>
+              </h4>
+              <div class='price'>
+                <span class='fs-5'>$product_price</span>
+                <span class='text-decoration-line-through fs-6'> $pro_psp_price</span>
+              </div>
             </div>
+          </div>
+          <!-- End Single Product -->
         </div>
+
         ";
     }
     /// getProducts function Code Ends ///
@@ -291,6 +295,11 @@ function getProducts()
 /// getPaginator Function Starts ///
 function getPaginator()
 {
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page = 1;
+    }
     /// getPaginator Function Code Starts ///
     $per_page = 6;
     global $db;
@@ -333,15 +342,21 @@ function getPaginator()
     $result = mysqli_query($db, $query);
     $total_records = mysqli_num_rows($result);
     $total_pages = ceil($total_records / $per_page);
-    echo "<li><a href='shop.php?page=1";
+
+    echo "<li class='page-item'><a class='page-link' href='shop.php?page=1";
     if (!empty($aPath)) {
         echo "&" . $aPath;
     }
     echo "' >" . 'First Page' . "</a></li>";
     for ($i = 1; $i <= $total_pages; $i++) {
-        echo "<li><a href='shop.php?page=" . $i . (!empty($aPath) ? '&' . $aPath : '') . "' >" . $i . "</a></li>";
+        if ($page == $i) {
+            $className = 'active';
+        } else {
+            $className = '';
+        }
+        echo "<li class='page-item $className'><a class='page-link' href='shop.php?page=" . $i . (!empty($aPath) ? '&' . $aPath : '') . "' >" . $i . "</a></li>";
     };
-    echo "<li><a href='shop.php?page=$total_pages";
+    echo "<li class='page-item'><a class='page-link' href='shop.php?page=$total_pages";
     if (!empty($aPath)) {
         echo "&" . $aPath;
     }

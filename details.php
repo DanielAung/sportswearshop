@@ -17,6 +17,7 @@ if ($check_product == 0) {
   echo "<script> window.open('index.php','_self') </script>";
 } else {
   $row_product = mysqli_fetch_array($run_product);
+
   $p_cat_id = $row_product['p_cat_id'];
   $pro_id = $row_product['product_id'];
   $pro_title = $row_product['product_title'];
@@ -50,7 +51,7 @@ if ($check_product == 0) {
     <!-- HERO -->
     <div class="nero">
       <div class="nero__heading">
-        <span class="nero__bold">Product </span>View
+        <span class="nero__bold">Product </span> View
       </div>
       <p class="nero__text">
       </p>
@@ -68,46 +69,26 @@ if ($check_product == 0) {
             <!-- col-sm-6 Starts -->
             <div id="mainImage">
               <!-- mainImage Starts -->
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <!-- carousel-indicators Starts -->
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol><!-- carousel-indicators Ends -->
-
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                  <!-- carousel-inner Starts -->
-                  <div class="item active">
-                    <center>
-                      <img src="admin_area/product_images/<?php echo $pro_img1; ?>" class="img-responsive">
-                    </center>
+                  <div class="carousel-item active">
+                    <img src="admin_area/product_images/<?php echo $pro_img1; ?>" class="d-block w-100" alt="admin_area/product_images/<?php echo $pro_img1; ?>">
                   </div>
-
-                  <div class="item">
-                    <center>
-                      <img src="admin_area/product_images/<?php echo $pro_img2; ?>" class="img-responsive">
-                    </center>
+                  <div class="carousel-item">
+                    <img src="admin_area/product_images/<?php echo $pro_img2; ?>" class="d-block w-100" alt="admin_area/product_images/<?php echo $pro_img1; ?>">
                   </div>
-
-                  <div class="item">
-                    <center>
-                      <img src="admin_area/product_images/<?php echo $pro_img3; ?>" class="img-responsive">
-                    </center>
+                  <div class="carousel-item">
+                    <img src="admin_area/product_images/<?php echo $pro_img3; ?>" class="d-block w-100" alt="admin_area/product_images/<?php echo $pro_img1; ?>">
                   </div>
-                </div><!-- carousel-inner Ends -->
-
-                <a href="#myCarousel" class="left carousel-control" data-slide="prev">
-                  <!-- left carousel-control Starts -->
-                  <span class="glyphicon glyphicon-chevron-left"> </span>
-                  <span class="sr-only"> Previous </span>
-                </a><!-- left carousel-control Ends -->
-
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                  <!-- right carousel-control Starts -->
-                  <span class="glyphicon glyphicon-chevron-right"> </span>
-                  <span class="sr-only"> Next </span>
-                </a><!-- right carousel-control Ends -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
             </div><!-- mainImage Ends -->
             <?php echo $product_label; ?>
@@ -286,29 +267,7 @@ if ($check_product == 0) {
                 </p><!-- text-center buttons Ends -->
               </form><!-- form-horizontal Ends -->
             </div><!-- box Ends -->
-            <div class="row" id="thumbs">
-              <!-- row Starts -->
-              <div class="col-xs-4">
-                <!-- col-xs-4 Starts -->
-                <a href="#" class="thumb">
-                  <img src="admin_area/product_images/<?php echo $pro_img1; ?>" class="img-responsive">
-                </a>
-              </div><!-- col-xs-4 Ends -->
 
-              <div class="col-xs-4">
-                <!-- col-xs-4 Starts -->
-                <a href="#" class="thumb">
-                  <img src="admin_area/product_images/<?php echo $pro_img2; ?>" class="img-responsive">
-                </a>
-              </div><!-- col-xs-4 Ends -->
-
-              <div class="col-xs-4">
-                <!-- col-xs-4 Starts -->
-                <a href="#" class="thumb">
-                  <img src="admin_area/product_images/<?php echo $pro_img3; ?>" class="img-responsive">
-                </a>
-              </div><!-- col-xs-4 Ends -->
-            </div><!-- row Ends -->
           </div><!-- col-sm-6 Ends -->
         </div><!-- row Ends -->
 
@@ -351,7 +310,7 @@ if ($check_product == 0) {
             </div><!-- video tab-pane fade in  Ends -->
           </div><!-- tab-content Ends -->
         </div><!-- box Ends -->
-        <div id="row same-height-row">
+        <div class="row">
           <!-- row same-height-row Starts -->
           <?php
           if ($status == "product") {
@@ -408,13 +367,11 @@ if ($check_product == 0) {
                         <p class='btn btn-warning'> $manufacturer_name </p>
                       </center>
                       <hr>
-                      <h3><a href='$pro_url' >$pro_title</a></h3>
+                      <h3><a href='details.php?pro_id=$pro_id' >$pro_title</a></h3>
                       <p class='price' > $product_price $product_psp_price </p>
                       <p class='buttons' >
-                      <a href='$pro_url' class='btn btn-default' >View Details</a>
-                      <a href='$pro_url' class='btn btn-danger'>
-                      <i class='fa fa-shopping-cart'></i> Add To Cart
-                      </a>
+                      <a href='details.php?pro_id=$pro_id' class='btn btn-default' >View Details</a>
+                      
                       </p>
                       </div>
                         $product_label
@@ -469,9 +426,9 @@ if ($check_product == 0) {
                         ";
                 }
                 echo "
-                      <div class='col-md-3 col-sm-6 center-responsive' >
+                      <div class='col-md-3 col-sm-6'>
                       <div class='product' >
-                      <a href='$pro_url' >
+                      <a href='details.php?pro_id=$pro_id' >
                         <img src='admin_area/product_images/$pro_img1' class='img-responsive' >
                       </a>
                       <div class='text' >
@@ -479,11 +436,11 @@ if ($check_product == 0) {
                         <p class='btn btn-primary'> $manufacturer_name </p>
                       </center>
                       <hr>
-                      <h3><a href='$pro_url' >$pro_title</a></h3>
+                      <h3><a href='details.php?pro_id=$pro_id' >$pro_title</a></h3>
                       <p class='price' > $product_price $product_psp_price </p>
                       <p class='buttons' >
-                      <a href='$pro_url' class='btn btn-default' >View details</a>
-                      <a href='$pro_url' class='btn btn-primary'>
+                      <a href='details.php?pro_id=$pro_id' class='btn btn-default' >View details</a>
+                      <a href='details.php?pro_id=$pro_id' class='btn btn-primary'>
                       <i class='fa fa-shopping-cart'></i> Add to cart
                       </a>
                       </p>
