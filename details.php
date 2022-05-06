@@ -7,7 +7,6 @@ include("includes/main.php");
 ?>
 
 <?php
-echo $_GET['pro_id'];
 $product_id = @$_GET['pro_id'];
 $get_product = "select * from products where product_id='$product_id'";
 $run_product = mysqli_query($con, $get_product);
@@ -17,7 +16,8 @@ if ($check_product == 0) {
   echo "<script> window.open('index.php','_self') </script>";
 } else {
   $row_product = mysqli_fetch_array($run_product);
-
+  // echo "<pre>";
+  // print_r($row_product);
   $p_cat_id = $row_product['p_cat_id'];
   $pro_id = $row_product['product_id'];
   $pro_title = $row_product['product_title'];
@@ -47,6 +47,36 @@ if ($check_product == 0) {
   $row_p_cat = mysqli_fetch_array($run_p_cat);
   $p_cat_title = $row_p_cat['p_cat_title'];
 ?>
+
+  <?php
+  if (isset($_POST['add_cart'])) {
+    $ip_add = getRealUserIp();
+    $p_id = $pro_id;
+    $product_qty = $_POST['product_qty'];
+    $product_size = $_POST['product_size'];
+    $check_product = "select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
+    $run_check = mysqli_query($con, $check_product);
+
+    if (mysqli_num_rows($run_check) > 0) {
+      echo "<script>alert('This Product is already added in cart')</script>";
+    } else {
+      $get_price = "select * from products where product_id='$p_id'";
+      $run_price = mysqli_query($con, $get_price);
+      $row_price = mysqli_fetch_array($run_price);
+      $pro_price = $row_price['product_price'];
+      $pro_psp_price = $row_price['product_psp_price'];
+      $pro_label = $row_price['product_label'];
+
+      if ($pro_label == "Sale" or $pro_label == "Gift") {
+        $product_price = $pro_psp_price;
+      } else {
+        $product_price = $pro_price;
+      }
+      $query = "insert into cart (p_id,ip_add,qty,p_price,size) values ('$p_id','$ip_add','$product_qty','$product_price','$product_size')";
+      $run_query = mysqli_query($db, $query);
+    }
+  }
+  ?>
   <main>
     <!-- HERO -->
     <div class="nero">
@@ -98,35 +128,6 @@ if ($check_product == 0) {
             <div class="box">
               <!-- box Starts -->
               <h1 class="text-center"> <?php echo $pro_title; ?> </h1>
-              <?php
-              if (isset($_POST['add_cart'])) {
-                $ip_add = getRealUserIp();
-                $p_id = $pro_id;
-                $product_qty = $_POST['product_qty'];
-                $product_size = $_POST['product_size'];
-                $check_product = "select * from cart where ip_add='$ip_add' AND p_id='$p_id'";
-                $run_check = mysqli_query($con, $check_product);
-
-                if (mysqli_num_rows($run_check) > 0) {
-                  echo "<script>alert('This Product is already added in cart')</script>";
-                } else {
-                  $get_price = "select * from products where product_id='$p_id'";
-                  $run_price = mysqli_query($con, $get_price);
-                  $row_price = mysqli_fetch_array($run_price);
-                  $pro_price = $row_price['product_price'];
-                  $pro_psp_price = $row_price['product_psp_price'];
-                  $pro_label = $row_price['product_label'];
-
-                  if ($pro_label == "Sale" or $pro_label == "Gift") {
-                    $product_price = $pro_psp_price;
-                  } else {
-                    $product_price = $pro_price;
-                  }
-                  $query = "insert into cart (p_id,ip_add,qty,p_price,size) values ('$p_id','$ip_add','$product_qty','$product_price','$product_size')";
-                  $run_query = mysqli_query($db, $query);
-                }
-              }
-              ?>
               <form action="" method="post" class="form-horizontal">
                 <!-- form-horizontal Starts -->
                 <?php
@@ -296,18 +297,18 @@ if ($check_product == 0) {
           <hr style="margin-top:0px;">
           <div class="tab-content">
             <!-- tab-content Starts -->
-            <div id="description" class="tab-pane fade in active" style="margin-top:7px;">
-              <!-- description tab-pane fade in active Starts -->
+            <div id="description" class="tab-pane active" style="margin-top:7px;">
+              <!-- description tab-pane active Starts -->
               <?php echo $pro_desc; ?>
-            </div><!-- description tab-pane fade in active Ends -->
-            <div id="features" class="tab-pane fade in" style="margin-top:7px;">
-              <!-- features tab-pane fade in  Starts -->
+            </div><!-- description tab-pane active Ends -->
+            <div id="features" class="tab-pane" style="margin-top:7px;">
+              <!-- features tab-pane  Starts -->
               <?php echo $pro_features; ?>
-            </div><!-- features tab-pane fade in  Ends -->
-            <div id="video" class="tab-pane fade in" style="margin-top:7px;">
-              <!-- video tab-pane fade in Starts -->
+            </div><!-- features tab-pane  Ends -->
+            <div id="video" class="tab-pane" style="margin-top:7px;">
+              <!-- video tab-pane Starts -->
               <?php echo $pro_video; ?>
-            </div><!-- video tab-pane fade in  Ends -->
+            </div><!-- video tab-pane  Ends -->
           </div><!-- tab-content Ends -->
         </div><!-- box Ends -->
         <div class="row">
@@ -350,11 +351,11 @@ if ($check_product == 0) {
               if ($pro_label == "") {
               } else {
                 $product_label = "
-                                    <a class='label sale' href='#' style='color:black;'>
-                                      <div class='thelabel'>$pro_label</div>
-                                      <div class='label-background'> </div>
-                                    </a>
-                                    ";
+                                  <a class='label sale' href='#' style='color:black;'>
+                                    <div class='thelabel'>$pro_label</div>
+                                    <div class='label-background'> </div>
+                                  </a>
+                                  ";
               }
               echo "
 

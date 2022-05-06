@@ -174,7 +174,7 @@ $count = mysqli_num_rows($run_cart);
                       ?>
                         <li>
                           <div class="cart-img-head">
-                            <a class="cart-img" href="details.php?pro_id=<? echo $p_id ?>"><img src="admin_area/product_images/<?php echo $product_img1 ?>" alt="#"></a>
+                            <a class="cart-img" href="details.php?pro_id=<?php echo $p_id ?>"><img src="admin_area/product_images/<?php echo $product_img1 ?>" alt="#"></a>
                           </div>
 
                           <div class="content">
@@ -207,7 +207,7 @@ $count = mysqli_num_rows($run_cart);
     <!-- Start Header Bottom -->
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-8 col-md-6 col-12">
+        <div class="col-lg-9 col-md-6 col-12">
           <div class="nav-inner">
             <!-- Start Mega Category Menu -->
             <div class="mega-category-menu">
@@ -287,7 +287,7 @@ $count = mysqli_num_rows($run_cart);
             <!-- End Navbar -->
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-12">
+        <div class="col-lg-3 col-md-6 col-12">
           <!-- Start Nav Social -->
           <div class="nav-social">
             <h5 class="title">Follow Us:</h5>

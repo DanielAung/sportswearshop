@@ -72,8 +72,8 @@ if (isset($_GET['add_cart'])) {
             <div class="product-image">
               <img src="admin_area/product_images/<?php echo $products[$i]['pro_img1'] ?>" alt="#">
               <div class="button">
-                <a href="index.php?add_cart=<?php echo $products[$i]['pro_id'] ?>" class="btn"><i class="lni lni-cart"></i>
-                  Add to Cart
+                <a href="details.php?pro_id=<?php echo $products[$i]['pro_id'] ?>" class="btn"><i class="lni lni-eye"></i>
+                  View Detail
                 </a>
               </div>
             </div>
