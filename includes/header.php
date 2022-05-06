@@ -73,7 +73,8 @@ $count = mysqli_num_rows($run_cart);
                   <a href="customer/my_account.php?my_orders">
                     <?php echo $_SESSION['customer_email']; ?>
                   </a>
-
+                  |
+                  <a href="logout.php">Logout</a>
                 <?php
                 } else {
                 ?>
@@ -109,28 +110,7 @@ $count = mysqli_num_rows($run_cart);
           </div>
           <div class="col-lg-5 col-md-7 d-xs-none">
             <!-- Start Main Menu Search -->
-            <div class="main-menu-search">
-              <!-- navbar search start -->
-              <div class="navbar-search search-style-5">
-                <div class="search-select">
-                  <div class="select-position">
-                    <select id="select1">
-                      <option selected>All</option>
-                      <option value="1">Man</option>
-                      <option value="2">Woman</option>
-                      <option value="3">Kids</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="search-input">
-                  <input type="text" placeholder="Search">
-                </div>
-                <div class="search-btn">
-                  <button><i class="lni lni-search-alt"></i></button>
-                </div>
-              </div>
-              <!-- navbar search Ends -->
-            </div>
+
             <!-- End Main Menu Search -->
           </div>
           <div class="col-lg-4 col-md-2 col-5">
@@ -142,12 +122,6 @@ $count = mysqli_num_rows($run_cart);
                 </h3>
               </div>
               <div class="navbar-cart">
-                <div class="wishlist">
-                  <a href="javascript:void(0)">
-                    <i class="lni lni-heart"></i>
-                    <span class="total-items">0</span>
-                  </a>
-                </div>
                 <div class="cart-items">
                   <a href="javascript:void(0)" class="main-btn">
                     <i class="lni lni-cart"></i>
@@ -157,7 +131,13 @@ $count = mysqli_num_rows($run_cart);
                   <div class="shopping-item">
                     <div class="dropdown-cart-header">
                       <span><?php echo $count ?> Items</span>
-                      <a href="cart.php">View Cart</a>
+                      <?php
+                      if ($count) {
+                      ?>
+                        <a href="cart.php">View Cart</a>
+                      <?php
+                      }
+                      ?>
                     </div>
                     <ul class="shopping-list">
 
@@ -178,7 +158,7 @@ $count = mysqli_num_rows($run_cart);
                           </div>
 
                           <div class="content">
-                            <h4><a href="details.php?pro_id=<? echo $p_id ?>">
+                            <h4><a href="details.php?pro_id=<?php echo $p_id ?>">
                                 <?php echo $product_title ?></a></h4>
                             <p class="quantity"><?php echo $qty ?>x - <span class="amount"><?php echo $qty * $price ?>.00</span></p>
                           </div>
@@ -190,9 +170,13 @@ $count = mysqli_num_rows($run_cart);
                         <span>Total</span>
                         <span class="total-amount"><?php echo $total ?>.00</span>
                       </div>
-                      <div class="button">
-                        <a href="checkout.html" class="btn animate">Checkout</a>
-                      </div>
+                      <?php
+                      if ($count) {
+                        echo "<div class='button'>
+                          <a href='checkout.php' class='btn animate'>Checkout</a>
+                        </div>";
+                      }
+                      ?>
                     </div>
                   </div>
                   <!--/ End Shopping Item -->
@@ -210,36 +194,7 @@ $count = mysqli_num_rows($run_cart);
         <div class="col-lg-9 col-md-6 col-12">
           <div class="nav-inner">
             <!-- Start Mega Category Menu -->
-            <div class="mega-category-menu">
-              <span class="cat-button"><i class="lni lni-menu"></i>All Categories</span>
-              <ul class="sub-category">
-                <li><a href="product-grids.html">Electronics <i class="lni lni-chevron-right"></i></a>
-                  <ul class="inner-sub-category">
-                    <li><a href="product-grids.html">Digital Cameras</a></li>
-                    <li><a href="product-grids.html">Camcorders</a></li>
-                    <li><a href="product-grids.html">Camera Drones</a></li>
-                    <li><a href="product-grids.html">Smart Watches</a></li>
-                    <li><a href="product-grids.html">Headphones</a></li>
-                    <li><a href="product-grids.html">MP3 Players</a></li>
-                    <li><a href="product-grids.html">Microphones</a></li>
-                    <li><a href="product-grids.html">Chargers</a></li>
-                    <li><a href="product-grids.html">Batteries</a></li>
-                    <li><a href="product-grids.html">Cables & Adapters</a></li>
-                  </ul>
-                </li>
-                <li><a href="product-grids.html">accessories</a></li>
-                <li><a href="product-grids.html">Televisions</a></li>
-                <li><a href="product-grids.html">best selling</a></li>
-                <li><a href="product-grids.html">top 100 offer</a></li>
-                <li><a href="product-grids.html">sunglass</a></li>
-                <li><a href="product-grids.html">watch</a></li>
-                <li><a href="product-grids.html">man’s product</a></li>
-                <li><a href="product-grids.html">Home Audio & Theater</a></li>
-                <li><a href="product-grids.html">Computers & Tablets </a></li>
-                <li><a href="product-grids.html">Video Games </a></li>
-                <li><a href="product-grids.html">Home Appliances </a></li>
-              </ul>
-            </div>
+
             <!-- End Mega Category Menu -->
             <!-- Start Navbar -->
             <nav class="navbar navbar-expand-lg">
@@ -273,7 +228,7 @@ $count = mysqli_num_rows($run_cart);
                     <a href="localstore.php" aria-label="Toggle navigation">Local store</a>
                   </li>
                   <li class="nav-item">
-                    <a href="terms.php" aria-label="Toggle navigation">Term of Use</a>
+                    <a href="terms.php" aria-label="Toggle navigation">Terms of Use</a>
                   </li>
                   <li class="nav-item">
                     <a href="contact.php" aria-label="Toggle navigation">Contact Us</a>

@@ -25,7 +25,7 @@ include("includes/main.php");
 
       <?php
       if (!isset($_SESSION['customer_email'])) {
-        include("customer/customer_login.php");
+        echo "<script>window.open('customer/customer_login.php','_self')</script>";
       } else {
         include("payment_options.php");
       }
