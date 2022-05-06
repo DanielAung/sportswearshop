@@ -55,7 +55,7 @@
     					</div>
     					<div class="col-lg-3 col-md-6 col-12">
     						<!-- Single Widget -->
-    						<!-- <div class="single-footer our-app">
+    						<div class="single-footer our-app">
     							<h3>Our Mobile App</h3>
     							<ul class="app-btn">
     								<li>
@@ -73,7 +73,7 @@
     									</a>
     								</li>
     							</ul>
-    						</div> -->
+    						</div>
     						<!-- End Single Widget -->
     					</div>
     					<div class="col-lg-3 col-md-6 col-12">
@@ -121,7 +121,7 @@
     					</div>
     					<div class="col-lg-4 col-12">
     						<div class="copyright">
-    							<p>Designed and Developed by<a href="https://graygrids.com/" rel="nofollow" target="_blank">GrayGrids</a></p>
+    							<p>Designed and Developed by<a href="https://www.kmd.com.sg/" rel="nofollow" target="_blank">KMD</a></p>
     						</div>
     					</div>
     					<div class="col-lg-4 col-12">
